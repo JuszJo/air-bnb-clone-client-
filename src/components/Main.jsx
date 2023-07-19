@@ -19,7 +19,7 @@ export default function Main() {
                 <section>
                     {
                         houses.map(({image, location, distance, days, price, rating}) => {
-                            return <Slider image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
+                            return <Slider key={location} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
                         })
                     }
                 </section>
