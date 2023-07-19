@@ -38,7 +38,7 @@ export default function Slider({image, location, distance, days, price, rating})
                                 <p className="paragraph">{days}</p>
                             </div>
                             <div style={{marginTop: "5px"}}>
-                                <p><span style={{fontWeight: 500}}>{price}</span> night</p>
+                                <p><span style={{fontWeight: 500}}>${price}</span> night</p>
                             </div>
                         </div>
                     </div>

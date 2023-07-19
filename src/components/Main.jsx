@@ -11,7 +11,7 @@ const houses = [
         location: "Ngaparou, Senegal",
         distance: "2,403 kilometers away",
         days: "Sep 4 - 10",
-        price: "$152",
+        price: 152.00,
         rating: 4.86
     },
     {
@@ -19,7 +19,7 @@ const houses = [
         location: "taghazout, Morocco",
         distance: "2,403 kilometers away",
         days: "Aug 15 - 20",
-        price: "$373",
+        price: 373.00,
         rating: 4.82
     },
 ]
@@ -51,14 +51,26 @@ const locations = [
     },
 ]
 
-export default function Main() {
+export default function Main({loaderData}) {
+
+    loaderData.forEach(houseData => {
+        houses.push({
+            image: houseData.images.picture_url,
+            location: houseData.address.country,
+            distance: "2,403 kilometers away",
+            days: "Aug 15 - 20",
+            price: houseData.price.$numberDecimal,
+            rating: houseData?.review_scores?.review_scores_rating
+        })
+    })
+
     return (
         <>
             <main>
                 <section>
                     {
                         houses.map(({image, location, distance, days, price, rating}) => {
-                            return <Slider key={location} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
+                            return <Slider key={image} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
                         })
                     }
                 </section>
