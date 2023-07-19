@@ -11,11 +11,11 @@ export default function SearchBar() {
                             <div>
                                 <img width={16} src={searchIcon} alt="search" />
                             </div>
-                            <div id="search-text-div" style={{paddingBottom: "1px"}}>
+                            <div id="search-text-div" style={{paddingBottom: "1px", lineHeight: 1}}>
                                 <div>
                                     <h4 className="small-heading">Anywhere</h4>
                                 </div>
-                                <div>
+                                <div style={{marginTop: "0.25rem"}}>
                                     <p id="sub-search-text">Any week &bull; Add guests</p>
                                 </div>
                             </div>

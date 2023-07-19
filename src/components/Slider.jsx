@@ -27,12 +27,8 @@ export default function Slider({image, location, distance, days, price, rating})
                                     <h4 className="small-heading">{location}</h4>
                                 </div>
                                 <div className="flex align-center gap">
-                                    <span>
-                                        <img width={12} src={star} />
-                                    </span>
-                                    <div>
-                                        <p>{rating}</p>
-                                    </div>
+                                    <img width={12} src={star} />
+                                    <span>{rating}</span>
                                 </div>
                             </div>
                             <div>
