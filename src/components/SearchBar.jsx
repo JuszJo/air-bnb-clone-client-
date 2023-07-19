@@ -11,7 +11,7 @@ export default function SearchBar() {
                             <div>
                                 <img width={16} src={searchIcon} alt="search" />
                             </div>
-                            <div id="search-text-div">
+                            <div id="search-text-div" style={{paddingBottom: "1px"}}>
                                 <div>
                                     <h4 className="small-heading">Anywhere</h4>
                                 </div>

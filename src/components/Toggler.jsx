@@ -1,7 +1,7 @@
 const togglerStyle = {
     border: "1px solid var(--light-grey)",
     borderRadius: "10px",
-    padding: "0.75rem 0"
+    padding: "0.75rem"
 }
 
 const buttonStyle = {
@@ -38,8 +38,8 @@ export function TogglerButton() {
 export default function Toggler({heading, paragraph}) {
     return (
         <>
-            <section>
-                <div style={togglerStyle} className="container">
+            <section className="container pd-tb">
+                <div style={togglerStyle}>
                     <div style={{padding: "0 0.75rem"}} className="flex justify-between align-center">
                         <div>
                             <div>
