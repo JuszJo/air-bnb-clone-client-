@@ -1,5 +1,6 @@
 import Slider from "./Slider";
 import ShowButton from "./ShowButton";
+import TextSlider from "./TextSlider";
 
 import image1 from "../assets/bnb1.jpg"
 import image2 from "../assets/bnb2.jpg"
@@ -23,6 +24,33 @@ const houses = [
     },
 ]
 
+const info = {
+    heading: "Inspiration for future getaways",
+    destinations: [
+        "Destinations for arts & culture",
+        "Destinations for outdoor adventure"
+    ]
+}
+
+const locations = [
+    {
+        key: "Phoenix",
+        value: "Arizona"
+    },
+    {
+        key: "Hot Springs",
+        value: "Arkansas"
+    },
+    {
+        key: "Los Angeles",
+        value: "California"
+    },
+    {
+        key: "San Diego",
+        value: "California"
+    },
+]
+
 export default function Main() {
     return (
         <>
@@ -34,13 +62,33 @@ export default function Main() {
                         })
                     }
                 </section>
-
                 <section>
                     <div className="container">
-                        <div style={{height: "150px", padding: "1.5rem 0"}}>
+                        <div style={{height: "120px", padding: "1.5rem 0"}}>
                             <div style={{backgroundColor: "#BABABA", height: "1px"}}></div>
                             <div className="flex justify-center align-center" style={{marginTop: "1.75rem"}}>
                                 <ShowButton />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="pd-tb">
+                    <div className="container">
+                        <div>
+                            <TextSlider heading={info.heading} destinations={info.destinations} />
+                        </div>
+                        <div>
+                            <div id="getaways">
+                                {
+                                    locations.map(({key, value}) => {
+                                        return (
+                                            <div key={key}>
+                                                <p>{key}</p>
+                                                <p style={{color: "var(--grey)"}}>{value}</p>
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

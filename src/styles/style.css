@@ -35,6 +35,12 @@ img {
     padding: 1rem 0;
 }
 
+.sub-heading {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--black);
+}
+
 .small-heading {
     font-size: 16px;
     font-weight: 500;
@@ -69,6 +75,22 @@ img {
 
 .gap {
     gap: 0.25rem;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.gap-5 {
+    gap: 1.25rem;
 }
 
 
@@ -107,4 +129,15 @@ img {
 #sub-search-text {
     font-size: 12px;
     color: var(--grey);
+}
+
+section ::-webkit-scrollbar {
+    display: none;
+}
+
+#getaways {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
 }

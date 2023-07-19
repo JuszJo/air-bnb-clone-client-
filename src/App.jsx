@@ -1,15 +1,20 @@
-import SearchBar from "./components/SearchBar"
-import CategoryBar from "./components/CategoryBar"
-import Toggler from "./components/Toggler"
-import Main from "./components/Main"
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import rootLoader from "./loaders/rootLoader";
+
 import "./styles/style.css"
 
+const router = createBrowserRouter(
+    createRoutesFromElements([
+        <Route index element={<Index />} loader={rootLoader} />
+    ])
+)
+
 export default function App() {
+
     return (
         <>
-            <SearchBar />
-            <Toggler heading="Display total price" paragraph="Includes all fees, before taxes" />
-            <Main />
+            <RouterProvider router={router} />
         </>
     )
 }
