@@ -41,6 +41,10 @@ img {
     color: var(--black);
 }
 
+.paragraph {
+    color: var(--grey);
+}
+
 .flex {
     display: flex;
 }
@@ -87,6 +91,6 @@ img {
 }
 
 #sub-search-text {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--grey);
 }
