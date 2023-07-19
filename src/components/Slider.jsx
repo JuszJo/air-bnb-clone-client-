@@ -1,3 +1,5 @@
+import star from "../assets/star.svg"
+
 const imageDivStyle = {
     width: "100%",
     height: "350px",
@@ -13,7 +15,7 @@ const imageStyle = {
 export default function Slider({image, location, distance, days, price, rating}) {
     return (
         <>
-            <section>
+            <section className="pd-tb">
                 <div className="container">
                     <div>
                         <div style={imageDivStyle}>
@@ -24,8 +26,13 @@ export default function Slider({image, location, distance, days, price, rating})
                                 <div>
                                     <h4 className="small-heading">{location}</h4>
                                 </div>
-                                <div>
-                                    <p>{rating}</p>
+                                <div className="flex align-center gap">
+                                    <span>
+                                        <img width={12} src={star} />
+                                    </span>
+                                    <div>
+                                        <p>{rating}</p>
+                                    </div>
                                 </div>
                             </div>
                             <div>

@@ -1,5 +1,7 @@
 import Slider from "./Slider";
+
 import image1 from "../assets/bnb1.jpg"
+import image2 from "../assets/bnb2.jpg"
 
 const houses = [
     {
@@ -9,7 +11,15 @@ const houses = [
         days: "Sep 4 - 10",
         price: "$152",
         rating: 4.86
-    }
+    },
+    {
+        image: image2,
+        location: "taghazout, Morocco",
+        distance: "2,403 kilometers away",
+        days: "Aug 15 - 20",
+        price: "$373",
+        rating: 4.82
+    },
 ]
 
 export default function Main() {

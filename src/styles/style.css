@@ -58,6 +58,10 @@ img {
     align-items: center;
 }
 
+.gap {
+    gap: 0.25rem;
+}
+
 
 /* search bar */
 
