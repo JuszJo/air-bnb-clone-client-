@@ -1,4 +1,5 @@
 import Slider from "./Slider";
+import ShowButton from "./ShowButton";
 
 import image1 from "../assets/bnb1.jpg"
 import image2 from "../assets/bnb2.jpg"
@@ -32,6 +33,17 @@ export default function Main() {
                             return <Slider key={location} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
                         })
                     }
+                </section>
+
+                <section>
+                    <div className="container">
+                        <div style={{height: "150px", padding: "1.5rem 0"}}>
+                            <div style={{backgroundColor: "#BABABA", height: "1px"}}></div>
+                            <div className="flex justify-center align-center" style={{marginTop: "1.75rem"}}>
+                                <ShowButton />
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </main>
         </>
