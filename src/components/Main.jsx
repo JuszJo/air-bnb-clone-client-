@@ -52,7 +52,6 @@ const locations = [
 ]
 
 export default function Main({loaderData}) {
-
     loaderData.forEach(houseData => {
         houses.push({
             image: houseData.images.picture_url,
