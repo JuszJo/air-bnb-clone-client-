@@ -1,10 +1,5 @@
 import star from "../assets/star.svg"
 
-const imageDivStyle = {
-    width: "100%",
-    height: "350px",
-}
-
 const imageStyle = {
     width: "100%",
     height: "100%",
@@ -16,9 +11,9 @@ export default function Slider({image, location, distance, days, price, rating})
     return (
         <>
             <section className="pd-tb">
-                <div className="container">
+                <div>
                     <div>
-                        <div style={imageDivStyle}>
+                        <div id="image-div">
                             <img src={image} style={imageStyle} />
                         </div>
                         <div style={{marginTop: "8px"}}>

@@ -67,11 +67,15 @@ export default function Main({loaderData}) {
         <>
             <main>
                 <section>
-                    {
-                        houses.map(({image, location, distance, days, price, rating}) => {
-                            return <Slider key={image} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
-                        })
-                    }
+                    <div>
+                        <div id="house-grid" className="container">
+                            {
+                                houses.map(({image, location, distance, days, price, rating}) => {
+                                    return <Slider key={image} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
+                                })
+                            }
+                        </div>
+                    </div>
                 </section>
                 <section>
                     <div className="container">
