@@ -131,9 +131,16 @@ img {
     color: var(--grey);
 }
 
-#image-div {
+.slider-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-style {
     width: 100%;
-    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 4 / 3;
 }
 
 section ::-webkit-scrollbar {
@@ -152,10 +159,5 @@ section ::-webkit-scrollbar {
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(2, 1fr);
         column-gap: 1.25rem;
-    }
-
-    #image-div {
-        width: 100%;
-        height: 240px;
     }
 }

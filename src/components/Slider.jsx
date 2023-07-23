@@ -1,20 +1,13 @@
 import star from "../assets/star.svg"
 
-const imageStyle = {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    borderRadius: "10px"
-}
-
 export default function Slider({image, location, distance, days, price, rating}) {
     return (
         <>
             <section className="pd-tb">
                 <div>
-                    <div>
-                        <div id="image-div">
-                            <img src={image} style={imageStyle} />
+                    <div className="slider-div">
+                        <div>
+                            <img src={image} className="image-style" />
                         </div>
                         <div style={{marginTop: "8px"}}>
                             <div className="flex justify-between">
