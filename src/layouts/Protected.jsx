@@ -27,7 +27,7 @@ export default function Protected() {
                 setAuth(true)
             }
         })
-    })
+    }, [])
 
     return auth && <Outlet />
 }

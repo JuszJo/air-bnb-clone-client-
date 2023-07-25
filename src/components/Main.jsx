@@ -5,53 +5,53 @@ import TextSlider from "./TextSlider";
 import image1 from "../assets/bnb1.jpg"
 import image2 from "../assets/bnb2.jpg"
 
-const houses = [
-    {
-        image: image1,
-        location: "Ngaparou, Senegal",
-        distance: "2,403 kilometers away",
-        days: "Sep 4 - 10",
-        price: 152.00,
-        rating: 4.86
-    },
-    {
-        image: image2,
-        location: "taghazout, Morocco",
-        distance: "2,403 kilometers away",
-        days: "Aug 15 - 20",
-        price: 373.00,
-        rating: 4.82
-    },
-]
-
-const info = {
-    heading: "Inspiration for future getaways",
-    destinations: [
-        "Destinations for arts & culture",
-        "Destinations for outdoor adventure"
-    ]
-}
-
-const locations = [
-    {
-        key: "Phoenix",
-        value: "Arizona"
-    },
-    {
-        key: "Hot Springs",
-        value: "Arkansas"
-    },
-    {
-        key: "Los Angeles",
-        value: "California"
-    },
-    {
-        key: "San Diego",
-        value: "California"
-    },
-]
-
 export default function Main({loaderData}) {
+    const houses = [
+        {
+            image: image1,
+            location: "Ngaparou, Senegal",
+            distance: "2,403 kilometers away",
+            days: "Sep 4 - 10",
+            price: 152.00,
+            rating: 4.86
+        },
+        {
+            image: image2,
+            location: "taghazout, Morocco",
+            distance: "2,403 kilometers away",
+            days: "Aug 15 - 20",
+            price: 373.00,
+            rating: 4.82
+        },
+    ]
+    
+    const info = {
+        heading: "Inspiration for future getaways",
+        destinations: [
+            "Destinations for arts & culture",
+            "Destinations for outdoor adventure"
+        ]
+    }
+    
+    const locations = [
+        {
+            key: "Phoenix",
+            value: "Arizona"
+        },
+        {
+            key: "Hot Springs",
+            value: "Arkansas"
+        },
+        {
+            key: "Los Angeles",
+            value: "California"
+        },
+        {
+            key: "San Diego",
+            value: "California"
+        },
+    ]
+
     loaderData.forEach(houseData => {
         houses.push({
             image: houseData.images.picture_url,
