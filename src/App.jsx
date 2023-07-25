@@ -13,6 +13,7 @@ const router = createBrowserRouter(
         <Route path="/login" element={<Login />} />,
         <Route element={<Protected />}>
             <Route index element={<Index />} loader={rootLoader}/>
+            <Route path="profile" element={<h1>Hello User</h1>} />
         </Route>,
     ])
 )

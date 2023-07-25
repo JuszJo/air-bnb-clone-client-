@@ -1,5 +1,3 @@
-import { redirect } from "react-router-dom"
-
 export default async function rootLoader() {
     const response = await fetch("http://localhost:3000", {
         headers: {
@@ -7,12 +5,7 @@ export default async function rootLoader() {
         }
     })
 
-    if(!response.ok) {
-        return redirect('/login')
-    }
-    else {
-        const data = await response.json()
-        
-        return data
-    }
+    const data = await response.json()
+    
+    return data
 }
