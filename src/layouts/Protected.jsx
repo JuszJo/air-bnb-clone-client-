@@ -6,7 +6,7 @@ async function checkAuth() {
     
     const response = await fetch('http://localhost:3000/', {
         headers: {
-            "x-access-token": token
+            "authorization": token
         }
     })
 
