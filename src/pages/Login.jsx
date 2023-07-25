@@ -8,7 +8,7 @@ export default function Login() {
 
     async function submitDetails(userObject) {
         try {
-            const response = await fetch('http://localhost:3000/signup', {
+            const response = await fetch('http://localhost:3000/login', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -17,10 +17,14 @@ export default function Login() {
             })
 
             if(response.status !== 200) {
-                navigate('/signup')
+                navigate(0)
             }
             else {
-                navigate('/login')
+                const data = await response.json();
+
+                localStorage.setItem('token', data.token)
+
+                navigate('/')
             }
         }
         catch(error) {

@@ -20,7 +20,7 @@ export default function Signup() {
             })
 
             if(response.status !== 200) {
-                navigate('/signup')
+                navigate(0)
             }
             else {
                 navigate('/login')
@@ -81,7 +81,7 @@ export default function Signup() {
                             <p className="su-sm-paragraph">
                                 We’ll call or text you to confirm your number.
                                 Standard message and data rates apply.
-                                <span style={{textDecoration: "underline", fontWeight: 500}}>Privacy Policy</span>
+                                <span style={{textDecoration: "underline", fontWeight: 500}}> Privacy Policy</span>
                             </p>
                         </div>
                         <div>
