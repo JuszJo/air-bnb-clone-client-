@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 async function checkAuth() {
     const token = localStorage.getItem('token')
     
-    const response = await fetch('http://localhost:3000/', {
+    const response = await fetch('http://localhost:3000/auth', {
         headers: {
             "authorization": token
         }
