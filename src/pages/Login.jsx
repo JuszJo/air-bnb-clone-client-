@@ -17,14 +17,14 @@ export default function Login() {
             })
 
             if(response.status !== 200) {
-                navigate(0)
+                navigate(0, {replace: true})
             }
             else {
                 const data = await response.json();
 
                 localStorage.setItem('token', data.token)
 
-                navigate('/')
+                navigate('/', {replace: true})
             }
         }
         catch(error) {
