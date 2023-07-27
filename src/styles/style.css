@@ -182,8 +182,38 @@ section ::-webkit-scrollbar {
 @media screen and (min-width: 550px) {
     #house-grid {
         display: grid;
-        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         column-gap: 1.25rem;
+    }
+}
+
+@media screen and (min-width: 950px) {
+    #house-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1330px) {
+    #house-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (min-width: 1640px) {
+    #house-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media screen and (min-width: 1880px) {
+    #house-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media screen and (min-width: 2200px) {
+    .container {
+        max-width: 2100px;
     }
 }
 
