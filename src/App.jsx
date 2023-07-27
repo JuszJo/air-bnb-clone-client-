@@ -3,7 +3,6 @@ import Index from "./pages/Index";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import authLoader from "./loaders/authLoader";
-import rootLoader from "./loaders/rootLoader";
 
 import "./styles/style.css"
 
@@ -12,7 +11,7 @@ const router = createBrowserRouter(
         <Route path="/signup" element={<Signup />} />,
         <Route path="/login" element={<Login />} />,
         <Route loader={authLoader}>
-            <Route index element={<Index />} loader={rootLoader}/>
+            <Route index element={<Index />} />
             <Route path="profile" element={<h1>Hello User</h1>} />
         </Route>,
     ])

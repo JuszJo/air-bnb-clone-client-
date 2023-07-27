@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Slider from "./Slider";
 import ShowButton from "./ShowButton";
 import TextSlider from "./TextSlider";
@@ -5,7 +7,7 @@ import TextSlider from "./TextSlider";
 import image1 from "../assets/bnb1.jpg"
 import image2 from "../assets/bnb2.jpg"
 
-export default function Main({loaderData}) {
+export default function Main() {
     const houses = [
         {
             image: image1,
@@ -52,18 +54,41 @@ export default function Main({loaderData}) {
         },
     ]
 
-    loaderData.forEach(houseData => {
-        houses.push({
-            image: houseData.images.picture_url,
-            location: houseData.address.country,
-            distance: "2,403 kilometers away",
-            days: "Aug 15 - 20",
-            price: houseData.price.$numberDecimal,
-            rating: houseData?.review_scores?.review_scores_rating
-        })
-    })
+    const [listings, setListings] = useState(null)
 
-    return (
+    async function fetchListings() {
+        const response = await fetch("http://localhost:3000", {
+            headers: {
+                "authorization": localStorage.getItem('token')
+            }
+        })
+
+        const data = await response.json()
+        
+        return data
+    }
+
+    useEffect(() => {
+        fetchListings()
+        .then(data => {
+            setListings(data)
+        })
+    }, [])
+
+    if(listings) {
+        listings.forEach(houseData => {
+            houses.push({
+                image: houseData.images.picture_url,
+                location: houseData.address.country,
+                distance: "2,403 kilometers away",
+                days: "Aug 15 - 20",
+                price: houseData.price.$numberDecimal,
+                rating: houseData?.review_scores?.review_scores_rating
+            })
+        })
+    }
+
+    return (listings &&
         <>
             <main>
                 <section>
