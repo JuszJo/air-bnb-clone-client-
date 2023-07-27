@@ -165,7 +165,7 @@ button {
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 3.5;
 }
 
 section ::-webkit-scrollbar {
