@@ -132,6 +132,10 @@ button {
     box-shadow: 0px 3px 15px -10px var(--grey);
 }
 
+.translate {
+    -webkit-transform: translate(0, -50%);
+}
+
 /* search bar */
 
 #circle {
@@ -219,6 +223,7 @@ section ::-webkit-scrollbar {
         display: flex;
         justify-content: space-between;
         padding: 1rem 0;
+        align-items: center;
     }
 
     .nav-flex-div {

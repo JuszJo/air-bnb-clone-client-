@@ -20,14 +20,13 @@ const circleStyle = {
     position: "absolute",
     top: "50%",
     left: "1px",
-    translate: "0 -50%"
 }
 
 export function TogglerButton() {
     return (
         <>
             <div style={buttonStyle}>
-                <div style={circleStyle}>
+                <div style={circleStyle} className="translate">
 
                 </div>
             </div>
