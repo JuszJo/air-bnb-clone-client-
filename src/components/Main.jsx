@@ -77,14 +77,16 @@ export default function Main() {
 
     if(listings) {
         listings.forEach(houseData => {
-            houses.push({
-                image: houseData.images.picture_url,
-                location: houseData.address.country,
+            const houseObject = {
+                image: houseData.images[0],
+                location: houseData.location,
                 distance: "2,403 kilometers away",
                 days: "Aug 15 - 20",
-                price: houseData.price.$numberDecimal,
-                rating: houseData?.review_scores?.review_scores_rating
-            })
+                price: houseData.price,
+                rating: houseData.rating
+            }
+
+            houses.push(houseObject)
         })
     }
 
