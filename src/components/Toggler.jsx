@@ -39,7 +39,7 @@ export default function Toggler({heading, paragraph}) {
     return (
         <>
             <section className="container pd-tb">
-                <div style={togglerStyle}>
+                <div style={togglerStyle} className="toggler-container">
                     <div style={{padding: "0 0.75rem"}} className="flex justify-between align-center">
                         <div>
                             <div>

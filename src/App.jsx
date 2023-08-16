@@ -10,7 +10,7 @@ const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/signup" element={<Signup />} />,
         <Route path="/login" element={<Login />} />,
-        <Route loader={authLoader}>
+        <Route /*loader={authLoader}*/>
             <Route index element={<Index />} />
             <Route path="profile" element={<h1>Hello User</h1>} />
         </Route>,

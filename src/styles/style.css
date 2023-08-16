@@ -1,4 +1,5 @@
 :root {
+    --pink: #FD5C63;
     --black: #222222;
     --grey: #717171;
     --light-grey: #d9d8d8;
@@ -122,6 +123,14 @@ button {
     gap: 1.25rem;
 }
 
+.navbar {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.navbar input {
+    box-shadow: 0px 3px 15px -10px var(--grey);
+}
 
 /* search bar */
 
@@ -132,6 +141,14 @@ button {
     width: 32px;
     height: 32px;
     left: 15px;
+}
+
+#logo-div {
+    display: none;
+}
+
+#nav-btn-group {
+    display: none;       
 }
 
 #settings-logo {
@@ -194,6 +211,39 @@ section ::-webkit-scrollbar {
 @media screen and (min-width: 950px) {
     #house-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
+    }
+
+    .nav-flex-div {
+        flex-basis: 100%;
+    }
+
+    #logo-div {
+        display: unset;
+    }
+    
+    #nav-btn-group {
+        display: unset;
+    }
+
+    #new-search-bar {
+        flex-basis: 150%;
+        max-width: 550px;
+        min-width: 550px;
+    }
+
+    .toggler-container {
+        max-width: 550px;
+        min-width: 550px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
