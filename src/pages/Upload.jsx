@@ -47,7 +47,7 @@ export default function Upload() {
     return (
         <>
             <h1>Property Information</h1>
-            <form method="POST">
+            <form id="upload-form" method="POST">
                 <div>
                     <input ref={fileRef} type="file" multiple required />
                 </div>

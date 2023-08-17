@@ -508,6 +508,10 @@ section ::-webkit-scrollbar {
 
 /* upload page */
 
+#upload-form input {
+    width: 100%;
+}
+
 #upload-button {
     width: 100%;
 }
