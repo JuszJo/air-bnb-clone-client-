@@ -72,7 +72,7 @@ export default function Upload() {
                     <textarea ref={descriptionRef} id="description" name="description" rows="4" cols="50" required />
                 </div>
                 <div>
-                    <button onClick={handleUpload} className="btn-primary">Upload</button>
+                    <button onClick={handleUpload} id="upload-button" className="btn-primary">Upload</button>
                 </div>
             </form>
         </>

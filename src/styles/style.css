@@ -505,3 +505,9 @@ section ::-webkit-scrollbar {
         max-width: 1200px;
     }
 }
+
+/* upload page */
+
+#upload-button {
+    width: 100%;
+}
