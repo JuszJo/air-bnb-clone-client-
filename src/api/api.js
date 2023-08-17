@@ -1,7 +1,9 @@
+const prod = false
+
 export default {
-    root: "https://jobnb-server.onrender.com",
-    auth: "https://jobnb-server.onrender.com/auth",
-    listing: "https://jobnb-server.onrender.com/listing",
-    login: "https://jobnb-server.onrender.com/login",
-    signup: "https://jobnb-server.onrender.com/signup",
+    root: prod ? "https://jobnb-server.onrender.com" : "http://localhost:3000",
+    auth: prod ? "https://jobnb-server.onrender.com/auth" : "http://localhost:3000/auth",
+    listing: prod ? "https://jobnb-server.onrender.com/listing" : "http://localhost:3000/listing",
+    login: prod ? "https://jobnb-server.onrender.com/login" : "http://localhost:3000/login",
+    signup: prod ? "https://jobnb-server.onrender.com/signup" : "http://localhost:3000/signup",
 }
