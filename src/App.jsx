@@ -3,6 +3,7 @@ import Index from "./pages/Index";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Listing from "./pages/Listing";
+import Upload from "./pages/Upload";
 
 import authLoader from "./loaders/authLoader";
 
@@ -15,7 +16,7 @@ const router = createBrowserRouter(
         <Route loader={authLoader}>
             <Route index element={<Index />} />
             <Route path="/listing/:id" element={<Listing />} />
-            <Route path="profile" element={<h1>Hello User</h1>} />
+            <Route path="/upload" element={<Upload />} />
         </Route>,
     ])
 )

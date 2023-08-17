@@ -84,7 +84,7 @@ export default function Home() {
                         <div id="house-grid" className="container">
                             {
                                 houses.map(({id, image, location, distance, days, price, rating}) => {
-                                    return <Slider id={id} key={image} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
+                                    return <Slider id={id} key={id} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
                                 })
                             }
                         </div>
