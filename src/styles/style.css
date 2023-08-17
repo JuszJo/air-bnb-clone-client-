@@ -353,6 +353,7 @@ section ::-webkit-scrollbar {
     margin-left: auto;
     margin-right: auto;
     font-family: sans-serif;
+    padding-bottom: 2rem;
 }
 
 .listing-img {
@@ -448,8 +449,46 @@ section ::-webkit-scrollbar {
     margin-top: 0.5rem;
 }
 
+#house-review-div {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--pink);
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    margin-top: 1rem;
+}
+
+#review-component-div {
+    text-align: center;
+    padding: 0 1.5rem;
+}
+
 #house-review {
     color: var(--grey);
+    margin-top: 1rem;
+}
+
+#house-review-div img {
+    cursor: pointer;
+}
+
+#reviewer-name-div {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 1rem;
+}
+
+
+#circle-style {
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid var(--pink);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
 }
 
 @media screen and (min-width: 1300px) {

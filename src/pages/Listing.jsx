@@ -8,36 +8,27 @@ import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
 import rightArrow from "../assets/right_arrow.png"
 
-const circleStyle = {
-    width: "27px",
-    height: "27px",
-    borderRadius: "50%",
-    backgroundColor: "transparent",
-    border: "1px solid var(--pink)",
-    position: "relative",
-}
-
 function UserIcon({user}) {
     return (
         <>
-            <div style={circleStyle}>
+            <div id="circle-style">
                 <span id="icon-name">{getFirstCharUpper(user)}</span>
             </div>
         </>
     )
 }
 
-function Review({reviews}) {
+function Review({review: {name, review}}) {
     return (
         <>
             <div>
-                <UserIcon user={reviews[0].name}/>
+                <UserIcon user={name}/>
             </div>
             <article id="house-review">
-                {reviews[0].review}
+                <em>{review}</em>
             </article>
-            <div>
-                <p style={{fontWeight: 400}}>{reviews[0].name}</p>
+            <div id="reviewer-name-div">
+                <p>{name}</p>
             </div>
         </>
     )
@@ -45,8 +36,25 @@ function Review({reviews}) {
 
 export default function Listing() {
     const [houseData, setHouseDate] = useState(null)
+    const [currentReview, setCurrentReview] = useState(0)
 
     const params = useParams()
+
+    function handleReviewChange(e) {
+        switch(e.target.id) {
+            case "prev-review":
+                if(currentReview > 0) {
+                    setCurrentReview(currentReview - 1)
+                }
+                break
+                
+            case "next-review":
+                if(currentReview < houseData.reviews.length - 1) {
+                    setCurrentReview(currentReview + 1)
+                }
+                break
+        }
+    }
 
     useEffect(() => {
         fetch(`http://localhost:3000/listing/${params.id}`)
@@ -101,11 +109,13 @@ export default function Listing() {
                                     </div>
                                     <div id="house-review-div">
                                         <div>
-                                            <img src={leftArrow} />
+                                            <img src={leftArrow} onClick={handleReviewChange} id="prev-review" />
                                         </div>
-                                        <Review reviews={houseData.reviews} />
+                                        <div id="review-component-div">
+                                            <Review review={houseData.reviews[currentReview]} />
+                                        </div>
                                         <div>
-                                            <img src={rightArrow} />
+                                            <img src={rightArrow} onClick={handleReviewChange} id="next-review" />
                                         </div>
                                     </div>
                                 </div>
