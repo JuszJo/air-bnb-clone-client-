@@ -61,6 +61,7 @@ export default function Main() {
     if(listings) {
         listings.forEach(houseData => {
             const houseObject = {
+                id: houseData._id,
                 image: houseData.images[0],
                 location: houseData.location,
                 distance: "2,403 kilometers away",
@@ -80,8 +81,8 @@ export default function Main() {
                     <div>
                         <div id="house-grid" className="container">
                             {
-                                houses.map(({image, location, distance, days, price, rating}) => {
-                                    return <Slider key={image} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
+                                houses.map(({id, image, location, distance, days, price, rating}) => {
+                                    return <Slider id={id} key={image} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
                                 })
                             }
                         </div>

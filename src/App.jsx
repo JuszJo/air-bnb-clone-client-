@@ -2,6 +2,8 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import Index from "./pages/Index";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Listing from "./pages/Listing";
+
 import authLoader from "./loaders/authLoader";
 
 import "./styles/style.css"
@@ -12,6 +14,7 @@ const router = createBrowserRouter(
         <Route path="/login" element={<Login />} />,
         <Route loader={authLoader}>
             <Route index element={<Index />} />
+            <Route path="/listing/:id" element={<Listing />} />
             <Route path="profile" element={<h1>Hello User</h1>} />
         </Route>,
     ])

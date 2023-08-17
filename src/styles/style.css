@@ -43,6 +43,11 @@ a {
     text-decoration: none;
 }
 
+a:-webkit-any-link {
+    color: unset;
+    cursor: pointer;
+}
+
 li {
     list-style: none;
 }
