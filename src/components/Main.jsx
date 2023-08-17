@@ -53,6 +53,9 @@ export default function Main() {
         .then(data => {
             setListings(data)
         })
+        .catch(err => {
+            console.log(err);
+        })
     }, [])
 
     if(listings) {

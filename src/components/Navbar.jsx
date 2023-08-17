@@ -1,12 +1,15 @@
+import { useState } from "react"
 import logo from "../assets/air_bnb_logo.png"
 import SearchBar from "./SearchBar"
 import Button from "./Button"
-
+import { Link } from "react-router-dom"
 
 export default function Navbar() {
+    const [username, setUsername] = useState(localStorage.getItem('username'))
+
     return (
         <>
-            <header style={{position: "sticky", top: "0", backgroundColor: "white", zIndex: "1", boxShadow: "0px 3px 15px -10px var(--grey)"}}>
+            <header style={{position: "sticky", top: "0", backgroundColor: "white", zIndex: "1"}}>
                 <nav>
                     <div className="container navbar">
                         <div className="nav-flex-div" id="logo-div">
@@ -17,8 +20,15 @@ export default function Navbar() {
                         </div>
                         <div className="nav-flex-div" style={{textAlign: "right"}}>
                             <div id="nav-btn-group">
-                                <Button text={"Login"} primary={true} />
-                                <Button text={"Signup"} />
+                                {
+                                    !username ?
+                                    <>
+                                        <Link to={'/login'}><Button text={"Login"} primary={true} /></Link>
+                                        <Link to={'/signup'}><Button text={"Signup"} /></Link>
+                                    </>
+                                    :
+                                    username
+                                }
                             </div>
                         </div>
                     </div>

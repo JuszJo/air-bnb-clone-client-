@@ -23,6 +23,7 @@ export default function Login() {
                 const data = await response.json();
 
                 localStorage.setItem('token', data.token)
+                localStorage.setItem('username', data.username)
 
                 navigate('/', {replace: true})
             }
