@@ -1,5 +1,7 @@
+import api from "../api/api"
+
 export default async function rootLoader() {
-    const response = await fetch("http://localhost:3000", {
+    const response = await fetch(api.root, {
         headers: {
             "authorization": localStorage.getItem('token')
         }

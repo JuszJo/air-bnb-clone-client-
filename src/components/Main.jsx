@@ -4,6 +4,8 @@ import Slider from "./Slider";
 import ShowButton from "./ShowButton";
 import TextSlider from "./TextSlider";
 
+import api from '../api/api'
+
 export default function Main() {
     const houses = []
     
@@ -37,7 +39,7 @@ export default function Main() {
     const [listings, setListings] = useState(null)
 
     async function fetchListings() {
-        const response = await fetch("http://localhost:3000", {
+        const response = await fetch(api.root, {
             headers: {
                 "authorization": localStorage.getItem('token')
             }

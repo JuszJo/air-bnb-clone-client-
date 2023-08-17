@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar"
 import Button from "../components/Button"
 import { getFirstCharUpper } from "../utils/utils"
 
+import api from '../api/api'
+
 import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
 import rightArrow from "../assets/right_arrow.png"
@@ -47,7 +49,7 @@ export default function Listing() {
                     setCurrentReview(currentReview - 1)
                 }
                 break
-                
+
             case "next-review":
                 if(currentReview < houseData.reviews.length - 1) {
                     setCurrentReview(currentReview + 1)
@@ -57,7 +59,7 @@ export default function Listing() {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:3000/listing/${params.id}`)
+        fetch(`${api.listing}/${params.id}`)
             .then(response => response.json())
             .then(data => setHouseDate(data))
     }, [])

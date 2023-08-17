@@ -1,6 +1,8 @@
+import api from '../api/api'
+
 export default async function authLoader() {
     try {
-        const response = await fetch("http://localhost:3000/auth", {
+        const response = await fetch(api.auth, {
             headers: {
                 "authorization": localStorage.getItem('token')
             }

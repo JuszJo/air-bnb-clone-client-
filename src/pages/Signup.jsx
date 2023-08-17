@@ -2,6 +2,8 @@ import { useRef } from "react"
 import arrowDown from "../assets/arrow-down.svg"
 import { useNavigate } from "react-router-dom";
 
+import api from "../api/api";
+
 export default function Signup() {
     const nameRef = useRef(null);
     const emailRef = useRef(null);
@@ -11,7 +13,7 @@ export default function Signup() {
 
     async function submitDetails(userObject) {
         try {
-            const response = await fetch('http://localhost:3000/signup', {
+            const response = await fetch(api.signup, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
