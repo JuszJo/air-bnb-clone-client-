@@ -24,7 +24,7 @@ export default function Upload() {
         const files = fileRef.current.files
 
         for(let i = 0; i < files.length; i++) {
-            formData.append("files", files[0])
+            formData.append("files", files[i])
         }
 
         fetch(api.upload, {
