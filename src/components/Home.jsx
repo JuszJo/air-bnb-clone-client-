@@ -6,7 +6,7 @@ import TextSlider from "./TextSlider";
 
 import api from '../api/api'
 
-export default function Main() {
+export default function Home() {
     const houses = []
     
     const info = {

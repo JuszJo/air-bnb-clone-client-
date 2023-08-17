@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar"
 import CategoryBar from "../components/CategoryBar"
 import Toggler from "../components/Toggler"
-import Main from "../components/Main"
+import Home from "../components/Home"
 
 export default function Index() {
 
@@ -9,7 +9,7 @@ export default function Index() {
         <>
             <Navbar />
             <Toggler heading="Display total price" paragraph="Includes all fees, before taxes" />
-            <Main />
+            <Home />
         </>
     )
 }
