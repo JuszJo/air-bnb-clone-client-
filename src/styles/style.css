@@ -368,6 +368,7 @@ section ::-webkit-scrollbar {
 .listing-img {
     aspect-ratio: 16 / 9;
     width: 100%;
+    object-fit: cover;
 }
 
 #house-owner-div {
