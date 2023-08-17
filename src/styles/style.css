@@ -372,7 +372,7 @@ section ::-webkit-scrollbar {
     font-weight: 400;
 }
 
-#house-owner-div span {
+#icon-name {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -382,7 +382,11 @@ section ::-webkit-scrollbar {
 }
 
 #house-image-div {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+#house-image-div img {
+    border-radius: 5px;
 }
 
 #house-info-div {
@@ -442,6 +446,10 @@ section ::-webkit-scrollbar {
 
 #reserve-button-div {
     margin-top: 0.5rem;
+}
+
+#house-review {
+    color: var(--grey);
 }
 
 @media screen and (min-width: 1300px) {

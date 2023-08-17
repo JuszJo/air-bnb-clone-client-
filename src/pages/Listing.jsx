@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
+import Button from "../components/Button"
 import { getFirstCharUpper } from "../utils/utils"
 
 import ratings from "../assets/ratings.png"
-import Button from "../components/Button"
+import leftArrow from "../assets/left_arrow.png"
+import rightArrow from "../assets/right_arrow.png"
 
 const circleStyle = {
     width: "27px",
@@ -13,6 +15,32 @@ const circleStyle = {
     backgroundColor: "transparent",
     border: "1px solid var(--pink)",
     position: "relative",
+}
+
+function UserIcon({user}) {
+    return (
+        <>
+            <div style={circleStyle}>
+                <span id="icon-name">{getFirstCharUpper(user)}</span>
+            </div>
+        </>
+    )
+}
+
+function Review({reviews}) {
+    return (
+        <>
+            <div>
+                <UserIcon user={reviews[0].name}/>
+            </div>
+            <article id="house-review">
+                {reviews[0].review}
+            </article>
+            <div>
+                <p style={{fontWeight: 400}}>{reviews[0].name}</p>
+            </div>
+        </>
+    )
 }
 
 export default function Listing() {
@@ -36,9 +64,7 @@ export default function Listing() {
                             <div className="listing-container">
                                 <div id="house-owner-div">
                                     <div>
-                                        <div style={circleStyle}>
-                                            <span>{getFirstCharUpper(houseData.owner)}</span>
-                                        </div>
+                                        <UserIcon user={houseData.owner} />
                                     </div>
                                     <div>
                                         <p>{houseData.owner_name}</p>
@@ -61,7 +87,6 @@ export default function Listing() {
                                             <p id="house-location">{houseData.location}</p>
                                         </div>
                                         <div id="house-rating-div">
-                                            {/* <p id="house-rating">{houseData.rating}</p> */}
                                             <img src={ratings} alt="ratings" id="house-rating" />
                                         </div>
                                         <hr style={{border: "0.5px solid var(--light-grey)", marginTop: "8px"}} />
@@ -75,9 +100,13 @@ export default function Listing() {
                                         </div>
                                     </div>
                                     <div id="house-review-div">
-                                        <article id="house-review">
-                                            {/* {houseData.reviews[0]} */}
-                                        </article>
+                                        <div>
+                                            <img src={leftArrow} />
+                                        </div>
+                                        <Review reviews={houseData.reviews} />
+                                        <div>
+                                            <img src={rightArrow} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
