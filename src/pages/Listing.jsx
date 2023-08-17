@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
+import { getFirstCharUpper } from "../utils/utils"
 
 import ratings from "../assets/ratings.png"
 import Button from "../components/Button"
+
+const circleStyle = {
+    width: "27px",
+    height: "27px",
+    borderRadius: "50%",
+    backgroundColor: "transparent",
+    border: "1px solid var(--pink)",
+    position: "relative",
+}
 
 export default function Listing() {
     const [houseData, setHouseDate] = useState(null)
@@ -25,7 +35,14 @@ export default function Listing() {
                         <div>
                             <div className="listing-container">
                                 <div id="house-owner-div">
-                                    <p>{houseData.owner}</p>
+                                    <div>
+                                        <div style={circleStyle}>
+                                            <span>{getFirstCharUpper(houseData.owner)}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p>{houseData.owner_name}</p>
+                                    </div>
                                 </div>
                                 <div id="house-image-div">
                                     <img src={houseData.images[0]} alt="listing" className="listing-img" />

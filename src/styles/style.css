@@ -360,6 +360,31 @@ section ::-webkit-scrollbar {
     width: 100%;
 }
 
+#house-owner-div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#house-owner-div p {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#house-owner-div span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: var(--pink);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+#house-image-div {
+    margin-top: 0.25rem;
+}
+
 #house-info-div {
     margin-top: 0.25rem;
 }
