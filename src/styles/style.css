@@ -344,3 +344,22 @@ section ::-webkit-scrollbar {
     margin-top: 1rem;
     border-radius: 0.5rem;
 }
+
+/* listing page */
+
+.listing-container {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.listing-img {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+@media screen and (min-width: 1300px) {
+    .listing-container {
+        max-width: 1200px;
+    }
+}
