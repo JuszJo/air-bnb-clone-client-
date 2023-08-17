@@ -109,17 +109,20 @@ export default function Listing() {
                                             <Button text={"Reserve"} primary style={{width: "100%"}} />
                                         </div>
                                     </div>
-                                    <div id="house-review-div">
-                                        <div>
-                                            <img src={leftArrow} onClick={handleReviewChange} id="prev-review" />
-                                        </div>
-                                        <div id="review-component-div">
-                                            <Review review={houseData.reviews[currentReview]} />
-                                        </div>
-                                        <div>
-                                            <img src={rightArrow} onClick={handleReviewChange} id="next-review" />
-                                        </div>
-                                    </div>
+                                    {
+                                        houseData.reviews.length > 0 &&
+                                            <div id="house-review-div">
+                                                <div>
+                                                    <img src={leftArrow} onClick={handleReviewChange} id="prev-review" />
+                                                </div>
+                                                <div id="review-component-div">
+                                                    <Review review={houseData.reviews[currentReview]} />
+                                                </div>
+                                                <div>
+                                                    <img src={rightArrow} onClick={handleReviewChange} id="next-review" />
+                                                </div>
+                                            </div>
+                                    }
                                 </div>
                             </div>
                         </div>
