@@ -138,6 +138,7 @@ button {
 }
 
 .translate {
+    transform: translate(0, -50%);
     -webkit-transform: translate(0, -50%);
 }
 
