@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import MobileNav from "../components/MobileNav"
 import Button from "../components/Button"
@@ -40,6 +40,7 @@ function Review({review: {name, review}}) {
 export default function Listing() {
     const [houseData, setHouseDate] = useState(null)
     const [currentReview, setCurrentReview] = useState(0)
+    const navigate = useNavigate()
 
     const params = useParams()
 
@@ -57,6 +58,24 @@ export default function Listing() {
                 }
                 break
         }
+    }
+
+    function handleDelete() {
+        fetch(`${api.delete}/${params.id}`, {
+            method: "DELETE",
+        })
+        .then(response => {
+            if(response.ok) {
+                alert("House deleted")
+
+                navigate("/", {replace: true})
+            }
+            else {
+                alert("Error deleting house")
+
+                navigate(0, {replace: true})
+            }
+        })
     }
 
     useEffect(() => {
@@ -124,6 +143,9 @@ export default function Listing() {
                                                 </div>
                                             </div>
                                     }
+                                </div>
+                                <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
+                                    <button onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>Delete</button>
                                 </div>
                             </div>
                         </div>
