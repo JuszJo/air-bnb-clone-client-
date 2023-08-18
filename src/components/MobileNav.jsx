@@ -32,7 +32,7 @@ export default function MobileNav() {
                 :
                     <section id="mobile-section">
                         <div className="container">
-                            <div style={{fontFamily: "sans-serif", width: "27px", margin: "auto"}} onClick={handleUpload}>
+                            <div style={{fontFamily: "sans-serif", width: "27px", margin: "auto", cursor: "pointer"}} onClick={handleUpload}>
                                 <CurrentUserIcon user={username} />
                             </div>
                         </div>

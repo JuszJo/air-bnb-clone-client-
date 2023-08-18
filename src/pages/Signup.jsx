@@ -50,7 +50,7 @@ export default function Signup() {
                 <div className="su-container">
                     <div>
                         <div>
-                            <h2 className="su-sm-heading">Log in or sign up</h2>
+                            <h2 className="su-sm-heading">Log in or Sign up</h2>
                         </div>
                         <div>
                             <h1 className="su-heading">Welcome to Jobnb</h1>

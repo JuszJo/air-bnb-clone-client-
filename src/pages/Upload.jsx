@@ -46,33 +46,36 @@ export default function Upload() {
 
     return (
         <>
-            <h1>Property Information</h1>
+            <div>
+                <h2 className="su-sm-heading">Upload Property</h2>
+            </div>
             <form id="upload-form" method="POST">
-                <div>
-                    <input ref={fileRef} type="file" multiple required />
+                <div style={{maxWidth: "80%", margin: "auto"}}>
+                    <h2 className="su-heading">Property Information</h2>
+                    <div style={{marginTop: "2rem"}}>
+                        <label htmlFor="files" style={{fontFamily: "sans-serif"}}>Upload Images</label>
+                        <input ref={fileRef} type="file"  multiple required />
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="name">Name:</label>
-                    <input ref={nameRef} type="text" id="form-name" name="name" required />
-                </div>
-                <div>
-                    <label htmlFor="location">Location:</label>
-                    <input ref={locationRef} type="text" id="location" name="location" required />
-                </div>
-                <div>
-                    <label htmlFor="price">Price:</label>
-                    <input ref={priceRef} type="number" id="price" name="price" required />
-                </div>
-                <div>
-                    <label htmlFor="rating">Rating:</label>
-                    <input ref={ratingRef} type="number" id="rating" name="rating" required />
-                </div>
-                <div>
-                    <label htmlFor="description">Description:</label>
-                    <textarea ref={descriptionRef} id="description" name="description" rows="4" cols="50" required />
-                </div>
-                <div>
-                    <button onClick={handleUpload} id="upload-button" className="btn-primary">Upload</button>
+                <div className="form-group su-container">
+                    <div>
+                        <input ref={nameRef} type="text" id="form-name" name="name" placeholder="Name" required />
+                    </div>
+                    <div>
+                        <input ref={locationRef} type="text" id="location" name="location" placeholder="Location" required />
+                    </div>
+                    <div>
+                        <input ref={priceRef} type="number" id="price" name="price" placeholder="Price" required />
+                    </div>
+                    <div>
+                        <input ref={ratingRef} type="number" id="rating" name="rating" placeholder="Rating" required />
+                    </div>
+                    <div>
+                        <textarea ref={descriptionRef} id="description" name="description" placeholder="Description" required />
+                    </div>
+                    <div>
+                        <button onClick={handleUpload} id="upload-button" className="su-bt-bg">Upload</button>
+                    </div>
                 </div>
             </form>
         </>
