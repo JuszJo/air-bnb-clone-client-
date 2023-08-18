@@ -27,6 +27,11 @@ export default function Login() {
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('username', data.username)
 
+                setTimeout(() => {
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('username')
+                }, 300000)
+
                 navigate('/', {replace: true})
             }
         }
