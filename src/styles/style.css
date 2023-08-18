@@ -219,6 +219,16 @@ section ::-webkit-scrollbar {
     margin-top: 2rem;
 }
 
+#mobile-section {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    background-color: white;
+    padding: 1rem 0;
+    border-top: 1px solid var(--light-grey);
+}
+
 @media screen and (min-width: 550px) {
     #house-grid {
         display: grid;
@@ -264,6 +274,10 @@ section ::-webkit-scrollbar {
         min-width: 550px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    #mobile-section {
+        display: none;
     }
 }
 
