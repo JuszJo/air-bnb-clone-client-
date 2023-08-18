@@ -52,7 +52,7 @@ export default function Upload() {
             <form id="upload-form" method="POST">
                 <div style={{maxWidth: "80%", margin: "auto"}}>
                     <h2 className="su-heading">Property Information</h2>
-                    <div style={{marginTop: "2rem"}}>
+                    <div style={{marginTop: "1rem"}}>
                         <label htmlFor="files" style={{fontFamily: "sans-serif"}}>Upload Images</label>
                         <input ref={fileRef} type="file"  multiple required />
                     </div>
