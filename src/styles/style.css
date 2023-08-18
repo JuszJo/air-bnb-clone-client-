@@ -227,6 +227,7 @@ section ::-webkit-scrollbar {
     background-color: white;
     padding: 1rem 0;
     border-top: 1px solid var(--light-grey);
+    font-family: sans-serif;
 }
 
 @media screen and (min-width: 550px) {

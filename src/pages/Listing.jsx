@@ -10,7 +10,7 @@ import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
 import rightArrow from "../assets/right_arrow.png"
 
-function UserIcon({user}) {
+export function UserIcon({user}) {
     return (
         <>
             <div id="circle-style">

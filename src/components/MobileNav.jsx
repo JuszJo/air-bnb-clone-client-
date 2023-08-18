@@ -1,7 +1,11 @@
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { UserIcon } from "../pages/Listing"
+
 import loginIcon from "../assets/login.svg"
 
 export default function MobileNav() {
+    const [username, setUsername] = useState(localStorage.getItem('username'))
     const navigate = useNavigate()
 
     function handleClick() {
@@ -10,15 +14,26 @@ export default function MobileNav() {
 
     return (
         <>
-            <section id="mobile-section">
-                <div>
-                    <div className="container">
+            {
+                !username ? 
+                    <section id="mobile-section">
                         <div>
-                            <img onClick={handleClick} width={32} src={loginIcon} />
+                            <div className="container">
+                                <div>
+                                    <img onClick={handleClick} width={32} src={loginIcon} style={{cursor: "pointer"}} />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
+                :
+                    <section id="mobile-section">
+                        <div>
+                            <div className="container">
+                                <UserIcon user={username} />
+                            </div>
+                        </div>
+                    </section>
+            }
         </>
     )
 }

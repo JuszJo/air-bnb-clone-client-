@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import api from '../api/api'
 
@@ -50,7 +50,7 @@ export default function Login() {
                 <div className="su-container">
                     <div>
                         <div>
-                            <h2 className="su-sm-heading">Log in or sign up</h2>
+                            <h2 className="su-sm-heading">Log in or Sign up</h2>
                         </div>
                         <div>
                             <h1 className="su-heading">Welcome to Jobnb</h1>
@@ -62,6 +62,9 @@ export default function Login() {
                             <div>
                                 <input ref={passwordRef} type="password" name="password" placeholder="Password" />
                             </div>
+                        </div>
+                        <div style={{marginTop: "0.5rem"}}>
+                            <p>Don't have an account? <Link to={'/signup'} style={{textDecoration: "underline", fontWeight: 500}} >Sign up</Link> </p>
                         </div>
                         <div>
                             <button className="su-bt-bg" onClick={handleSubmit}>Login</button>
