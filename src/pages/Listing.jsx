@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
+import MobileNav from "../components/MobileNav"
 import Button from "../components/Button"
 import { getFirstCharUpper } from "../utils/utils"
 
@@ -23,7 +24,7 @@ export function UserIcon({user}) {
 function Review({review: {name, review}}) {
     return (
         <>
-            <div>
+            <div style={{width: "27px", margin: "auto"}}>
                 <UserIcon user={name}/>
             </div>
             <article id="house-review">
@@ -127,6 +128,7 @@ export default function Listing() {
                             </div>
                         </div>
                 }
+                <MobileNav />
             </section>
         </>
     )

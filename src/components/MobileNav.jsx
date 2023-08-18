@@ -27,8 +27,8 @@ export default function MobileNav() {
                     </section>
                 :
                     <section id="mobile-section">
-                        <div>
-                            <div className="container">
+                        <div className="container">
+                            <div style={{fontFamily: "sans-serif", width: "27px", margin: "auto"}}>
                                 <UserIcon user={username} />
                             </div>
                         </div>

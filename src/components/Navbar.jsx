@@ -1,8 +1,10 @@
 import { useState } from "react"
-import logo from "../assets/air_bnb_logo.png"
+import { Link } from "react-router-dom"
 import SearchBar from "./SearchBar"
 import Button from "./Button"
-import { Link } from "react-router-dom"
+import { UserIcon } from "../pages/Listing"
+
+import logo from "../assets/air_bnb_logo.png"
 
 export default function Navbar() {
     const [username, setUsername] = useState(localStorage.getItem('username'))
@@ -27,7 +29,9 @@ export default function Navbar() {
                                         <Link to={'/signup'}><Button text={"Signup"} /></Link>
                                     </>
                                     :
-                                    username
+                                    <div style={{fontFamily: "sans-serif", width: "27px", marginLeft: "auto"}}>
+                                        <UserIcon user={username} />
+                                    </div>
                                 }
                             </div>
                         </div>
