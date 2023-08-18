@@ -63,6 +63,9 @@ export default function Listing() {
     function handleDelete() {
         fetch(`${api.delete}/${params.id}`, {
             method: "DELETE",
+            headers: {
+                "authorization": localStorage.getItem('token')
+            }
         })
         .then(response => {
             if(response.ok) {
@@ -79,9 +82,20 @@ export default function Listing() {
     }
 
     useEffect(() => {
-        fetch(`${api.listing}/${params.id}`)
-            .then(response => response.json())
-            .then(data => setHouseDate(data))
+        fetch(`${api.listing}/${params.id}`, {
+            headers: {
+                "authorization": localStorage.getItem('token')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.signout) {
+                localStorage.removeItem('token')
+                localStorage.removeItem('username')
+            }
+            
+            setHouseDate(data)
+        })
     }, [])
     
     return (
@@ -144,9 +158,14 @@ export default function Listing() {
                                             </div>
                                     }
                                 </div>
-                                <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
-                                    <button onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>Delete</button>
-                                </div>
+                                {
+                                    houseData.role == "admin" ?
+                                        <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
+                                            <button onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>Delete</button>
+                                        </div>
+                                    :
+                                        null
+                                }
                             </div>
                         </div>
                 }

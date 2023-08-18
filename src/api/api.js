@@ -1,4 +1,4 @@
-const prod = true
+const prod = true;
 
 export default {
     root: prod ? "https://jobnb-server.onrender.com" : "http://localhost:3000",

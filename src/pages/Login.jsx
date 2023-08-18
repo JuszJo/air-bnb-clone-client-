@@ -27,11 +27,6 @@ export default function Login() {
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('username', data.username)
 
-                setTimeout(() => {
-                    localStorage.removeItem('token')
-                    localStorage.removeItem('username')
-                }, 300000)
-
                 navigate('/', {replace: true})
             }
         }
@@ -40,7 +35,9 @@ export default function Login() {
         }
     }
 
-    async function handleSubmit() {
+    async function handleSubmit(e) {
+        e.preventDefault()
+
         const userObject = {
             username: usernameRef.current.value,
             password: passwordRef.current.value,
@@ -52,30 +49,32 @@ export default function Login() {
     return (
         <>
             <section>
-                <div className="su-container">
-                    <div>
+                <form>
+                    <div className="su-container">
                         <div>
-                            <h2 className="su-sm-heading">Log in or Sign up</h2>
-                        </div>
-                        <div>
-                            <h1 className="su-heading">Welcome to Jobnb</h1>
-                        </div>
-                        <div className="form-group">
                             <div>
-                                <input ref={usernameRef} type="text" name="username" placeholder="Username" />
+                                <h2 className="su-sm-heading">Log in or Sign up</h2>
                             </div>
                             <div>
-                                <input ref={passwordRef} type="password" name="password" placeholder="Password" />
+                                <h1 className="su-heading">Welcome to Jobnb</h1>
                             </div>
-                        </div>
-                        <div style={{marginTop: "0.5rem"}}>
-                            <p>Don't have an account? <Link to={'/signup'} style={{textDecoration: "underline", fontWeight: 500}} >Sign up</Link> </p>
-                        </div>
-                        <div>
-                            <button className="su-bt-bg" onClick={handleSubmit}>Login</button>
+                            <div className="form-group">
+                                <div>
+                                    <input ref={usernameRef} type="text" name="username" placeholder="Username" />
+                                </div>
+                                <div>
+                                    <input ref={passwordRef} type="password" name="password" placeholder="Password" />
+                                </div>
+                            </div>
+                            <div style={{marginTop: "0.5rem"}}>
+                                <p>Don't have an account? <Link to={'/signup'} style={{textDecoration: "underline", fontWeight: 500}} >Sign up</Link> </p>
+                            </div>
+                            <div>
+                                <button className="su-bt-bg" onClick={handleSubmit}>Login</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </section>
         </>
     )
