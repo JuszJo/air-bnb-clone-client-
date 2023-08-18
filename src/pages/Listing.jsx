@@ -11,11 +11,11 @@ import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
 import rightArrow from "../assets/right_arrow.png"
 
-export function UserIcon({user}) {
+function UserIcon({user}) {
     return (
         <>
-            <div id="circle-style">
-                <span id="icon-name">{getFirstCharUpper(user)}</span>
+            <div className="circle-style">
+                <span className="icon-name">{getFirstCharUpper(user)}</span>
             </div>
         </>
     )

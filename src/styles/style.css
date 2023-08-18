@@ -398,7 +398,7 @@ section ::-webkit-scrollbar {
     font-weight: 400;
 }
 
-#icon-name {
+.icon-name {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -503,7 +503,7 @@ section ::-webkit-scrollbar {
     margin-top: 1rem;
 }
 
-#circle-style {
+.circle-style {
     width: 27px;
     height: 27px;
     border-radius: 50%;

@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import CurrentUserIcon from "./CurrentUserIcon"
 import SearchBar from "./SearchBar"
 import Button from "./Button"
-import { UserIcon } from "../pages/Listing"
 
 import logo from "../assets/air_bnb_logo.png"
 
@@ -30,7 +30,7 @@ export default function Navbar() {
                                     </>
                                     :
                                     <div style={{fontFamily: "sans-serif", width: "27px", marginLeft: "auto"}}>
-                                        <UserIcon user={username} />
+                                        <CurrentUserIcon user={username} />
                                     </div>
                                 }
                             </div>
