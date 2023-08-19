@@ -390,6 +390,12 @@ section ::-webkit-scrollbar {
     border-radius: 0.5rem;
 }
 
+@media screen and (min-width: 1000px) {
+    .su-container {
+        max-width: 550px;
+    }
+}
+
 /* listing page */
 
 .listing-container {
@@ -530,6 +536,33 @@ section ::-webkit-scrollbar {
     background-color: transparent;
     border: 1px solid var(--pink);
     position: relative;
+}
+
+@media screen and (min-width: 1000px) {
+    #house-info-div {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    #house-text-div {
+        flex-basis: 50%;
+    }
+    
+    #house-review-div {
+        flex-basis: 50%;
+        margin-top: 0;
+        padding: 3rem 0.75rem;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    #house-name {
+        font-size: 1.5rem;
+    }
+
+    #house-price {
+        font-size: 22px;
+    }
 }
 
 @media screen and (min-width: 1300px) {
