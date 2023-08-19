@@ -1,10 +1,11 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import arrowDown from "../assets/arrow-down.svg"
 import { useNavigate } from "react-router-dom";
 
 import api from "../api/api";
 
 export default function Signup() {
+    const [loading, setLoading] = useState(false);
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const usernameRef = useRef(null);
@@ -22,9 +23,13 @@ export default function Signup() {
             })
 
             if(response.status !== 200) {
+                setLoading(false)
+
                 navigate(0)
             }
             else {
+                setLoading(false)
+
                 navigate('/login')
             }
         }
@@ -40,6 +45,8 @@ export default function Signup() {
             username: usernameRef.current.value,
             password: passwordRef.current.value,
         }
+
+        setLoading(true)
 
         await submitDetails(userObject)
     }
@@ -87,7 +94,7 @@ export default function Signup() {
                             </p>
                         </div>
                         <div>
-                            <button className="su-bt-bg" onClick={handleSubmit}>Signup</button>
+                            <button disabled={loading} className="su-bt-bg" onClick={handleSubmit}>{loading ? "Loading": "Signup"}</button>
                         </div>
                     </div>
                 </div>
@@ -95,49 +102,3 @@ export default function Signup() {
         </>
     )
 }
-
-// export default function Signup() {
-    
-
-//     return (
-//         <>
-//             <section>
-//                 <div className="su-container">
-//                     <div>
-//                         <div>
-//                             <h2 className="su-sm-heading">Log in or sign up</h2>
-//                         </div>
-//                         <div>
-//                             <h1 className="su-heading">Welcome to Jobnb</h1>
-//                         </div>
-//                         <div className="form-group">
-//                             <div>
-//                                 <select>
-//                                     <option value="234NG">Nigeria (+234)</option>
-//                                 </select>
-//                                 <img style={{
-//                                     position: "absolute",
-//                                     top: "17px",
-//                                     right: "17px"
-//                                 }} width={16} src={arrowDown} />
-//                             </div>
-//                             <div>
-//                                 <input type="text" placeholder="Phone number" />
-//                             </div>
-//                         </div>
-//                         <div>
-//                             <p className="su-sm-paragraph">
-//                                 We’ll call or text you to confirm your number.
-//                                 Standard message and data rates apply.
-//                                 <span style={{textDecoration: "underline", fontWeight: 500}}>Privacy Policy</span>
-//                             </p>
-//                         </div>
-//                         <div>
-//                             <button className="su-bt-bg">Continue</button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </section>
-//         </>
-//     )
-// }

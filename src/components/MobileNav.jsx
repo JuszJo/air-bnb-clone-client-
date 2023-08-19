@@ -26,6 +26,9 @@ export default function MobileNav() {
                                 <div>
                                     <img onClick={handleClick} width={32} src={loginIcon} style={{cursor: "pointer"}} />
                                 </div>
+                                <div>
+                                    <span style={{fontSize: "12px", color: "grey"}}>Log in</span>
+                                </div>
                             </div>
                         </div>
                     </section>

@@ -23,10 +23,22 @@ const circleStyle = {
 }
 
 export function TogglerButton() {
+    function handleClick(e) {
+        e.currentTarget.classList.toggle("translate-r")
+
+        const parentElement = e.currentTarget.parentElement
+
+        let parentBGColor = parentElement.style.backgroundColor
+
+        parentBGColor = parentBGColor == "rgb(100, 100, 100)" ? "rgb(176, 176, 176)" : "rgb(100, 100, 100)"
+
+        parentElement.style.backgroundColor = parentBGColor
+    }
+
     return (
         <>
             <div style={buttonStyle}>
-                <div style={circleStyle} className="translate">
+                <div style={circleStyle} onClick={handleClick} className="translate">
 
                 </div>
             </div>

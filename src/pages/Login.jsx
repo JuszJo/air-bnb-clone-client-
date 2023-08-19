@@ -1,9 +1,10 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 
 import api from '../api/api'
 
 export default function Login() {
+    const [loading, setLoading] = useState(false);
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
     const navigate = useNavigate();
@@ -27,6 +28,8 @@ export default function Login() {
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('username', data.username)
 
+                setLoading(false)
+
                 navigate('/', {replace: true})
             }
         }
@@ -42,6 +45,8 @@ export default function Login() {
             username: usernameRef.current.value,
             password: passwordRef.current.value,
         }
+
+        setLoading(true)
 
         await submitDetails(userObject)
     }
@@ -70,7 +75,7 @@ export default function Login() {
                                 <p>Don't have an account? <Link to={'/signup'} style={{textDecoration: "underline", fontWeight: 500}} >Sign up</Link> </p>
                             </div>
                             <div>
-                                <button className="su-bt-bg" onClick={handleSubmit}>Login</button>
+                                <button disabled={loading} className="su-bt-bg" onClick={handleSubmit}>{loading ? "Loading" : "Login"}</button>
                             </div>
                         </div>
                     </div>

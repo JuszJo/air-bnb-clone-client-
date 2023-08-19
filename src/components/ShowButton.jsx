@@ -5,6 +5,7 @@ const showMoreButtonStyle = {
     padding: "0.7rem 1.3rem",
     fontSize: "16px",
     fontWeight: "500",
+    color: "black"
 }
 
 export default function ShowButton() {

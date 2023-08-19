@@ -1,8 +1,10 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import MobileNav from "../components/MobileNav"
 import api from "../api/api"
 
 export default function Upload() {
+    const [loading, setLoading] = useState(false)
     const fileRef = useRef(null)
     const nameRef = useRef(null)
     const locationRef = useRef(null)
@@ -10,8 +12,14 @@ export default function Upload() {
     const ratingRef = useRef(null)
     const descriptionRef = useRef(null)
 
+    function handleChooseImage(e) {
+        console.log(e);
+    }
+
     function handleUpload(e) {
         e.preventDefault()
+
+        setLoading(true)
 
         const formData = new FormData()
 
@@ -36,9 +44,13 @@ export default function Upload() {
         })
         .then(res => {
             if(!res.ok) {
+                setLoading(false)
+
                 alert("failed")
             }
             else {
+                setLoading(false)
+
                 alert("successful")
             }
         })   
@@ -50,11 +62,11 @@ export default function Upload() {
                 <h2 className="su-sm-heading">Upload Property</h2>
             </div>
             <form id="upload-form" method="POST">
-                <div style={{maxWidth: "80%", margin: "auto"}}>
+                <div style={{maxWidth: "80%", margin: "auto", textAlign: "center"}}>
                     <h2 className="su-heading">Property Information</h2>
                     <div style={{marginTop: "1rem"}}>
-                        <label htmlFor="files" style={{fontFamily: "sans-serif"}}>Upload Images</label>
-                        <input ref={fileRef} type="file"  multiple required />
+                        <label onClick={handleChooseImage} id="file-label" htmlFor="files" style={{fontFamily: "sans-serif"}}>Upload Images</label>
+                        <input ref={fileRef} id="files" hidden type="file"  multiple required />
                     </div>
                 </div>
                 <div className="form-group su-container">
@@ -74,10 +86,11 @@ export default function Upload() {
                         <textarea ref={descriptionRef} id="description" name="description" placeholder="Description" required />
                     </div>
                     <div>
-                        <button onClick={handleUpload} id="upload-button" className="su-bt-bg">Upload</button>
+                        <button disabled={loading} onClick={handleUpload} id="upload-button" className="su-bt-bg">{loading ? "Loading" : "Upload"}</button>
                     </div>
                 </div>
             </form>
+            <MobileNav />
         </>
     )
 }
