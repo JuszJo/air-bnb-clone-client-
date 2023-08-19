@@ -2,7 +2,6 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import CurrentUserIcon from "./CurrentUserIcon"
 import SearchBar from "./SearchBar"
-import Button from "./Button"
 
 import logo from "../assets/air_bnb_logo.png"
 
@@ -25,8 +24,8 @@ export default function Navbar() {
                                 {
                                     !username ?
                                     <>
-                                        <Link to={'/login'}><Button text={"Login"} primary={true} /></Link>
-                                        <Link to={'/signup'}><Button text={"Signup"} /></Link>
+                                        <Link to={'/login'} className="btn-primary" style={{color: "white", paddingBottom: "10px"}}>Login</Link>
+                                        <Link to={'/signup'} className="btn-secondary" style={{marginLeft: "6px", paddingBottom: "10px"}}>Signup</Link>
                                     </>
                                     :
                                     <div style={{fontFamily: "sans-serif", width: "27px", marginLeft: "auto"}}>
