@@ -39,6 +39,7 @@ function Review({review: {name, review}}) {
 
 export default function Listing() {
     const [houseData, setHouseDate] = useState(null)
+    const [loading, setLoading] = useState(false)
     const [currentReview, setCurrentReview] = useState(0)
     const navigate = useNavigate()
 
@@ -61,6 +62,8 @@ export default function Listing() {
     }
 
     function handleDelete() {
+        setLoading(true)
+
         fetch(`${api.delete}/${params.id}`, {
             method: "DELETE",
             headers: {
@@ -69,11 +72,15 @@ export default function Listing() {
         })
         .then(response => {
             if(response.ok) {
+                setLoading(false)
+                
                 alert("House deleted")
 
                 navigate("/", {replace: true})
             }
             else {
+                setLoading(false)
+
                 alert("Error deleting house")
 
                 navigate(0, {replace: true})
@@ -161,7 +168,7 @@ export default function Listing() {
                                 {
                                     houseData.role == "admin" ?
                                         <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
-                                            <button onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>Delete</button>
+                                            <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
                                         </div>
                                     :
                                         null

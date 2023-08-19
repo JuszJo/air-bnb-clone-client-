@@ -230,7 +230,7 @@ section ::-webkit-scrollbar {
     bottom: 0;
     text-align: center;
     background-color: white;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     border-top: 1px solid var(--light-grey);
     font-family: sans-serif;
 }
@@ -332,6 +332,7 @@ section ::-webkit-scrollbar {
     font-size: var(--su-heading);
     font-weight: 600;
     padding-top: 2rem;
+    text-align: center;
 }
 
 .form-group {

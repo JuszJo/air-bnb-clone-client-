@@ -5,6 +5,7 @@ import api from "../api/api"
 
 export default function Upload() {
     const [loading, setLoading] = useState(false)
+    const [filesAmount, setFilesAmount] = useState(0)
     const fileRef = useRef(null)
     const nameRef = useRef(null)
     const locationRef = useRef(null)
@@ -12,8 +13,10 @@ export default function Upload() {
     const ratingRef = useRef(null)
     const descriptionRef = useRef(null)
 
-    function handleChooseImage(e) {
-        console.log(e);
+    function handleNewFile(e) {
+        const files = e.target.files
+
+        setFilesAmount(files.length)
     }
 
     function handleUpload(e) {
@@ -65,8 +68,11 @@ export default function Upload() {
                 <div style={{maxWidth: "80%", margin: "auto", textAlign: "center"}}>
                     <h2 className="su-heading">Property Information</h2>
                     <div style={{marginTop: "1rem"}}>
-                        <label onClick={handleChooseImage} id="file-label" htmlFor="files" style={{fontFamily: "sans-serif"}}>Upload Images</label>
-                        <input ref={fileRef} id="files" hidden type="file"  multiple required />
+                        <label id="file-label" htmlFor="files" style={{fontFamily: "sans-serif"}}>Upload Images</label>
+                        <div>
+                            <span style={{fontFamily: "sans-serif", fontSize: "13px"}}>{filesAmount} Files Choosen</span>
+                        </div>
+                        <input onChange={handleNewFile} ref={fileRef} id="files" hidden type="file"  multiple required />
                     </div>
                 </div>
                 <div className="form-group su-container">
