@@ -5,6 +5,7 @@ import api from '../api/api'
 
 export default function Login() {
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false)
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
     const navigate = useNavigate();
@@ -20,13 +21,17 @@ export default function Login() {
             })
 
             if(response.status !== 200) {
-                navigate(0, {replace: true})
+                setError(true)
+                
+                setLoading(false)
             }
             else {
                 const data = await response.json();
 
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('username', data.username)
+
+                setError(false)
 
                 setLoading(false)
 
@@ -65,10 +70,13 @@ export default function Login() {
                             </div>
                             <div className="form-group">
                                 <div>
-                                    <input ref={usernameRef} type="text" name="username" placeholder="Username" />
+                                    {error && <p className="error">Username or Password incorrect</p>}
                                 </div>
                                 <div>
-                                    <input ref={passwordRef} type="password" name="password" placeholder="Password" />
+                                    <input className={error ? "error-input" : ""} ref={usernameRef} type="text" name="username" placeholder="Username" />
+                                </div>
+                                <div>
+                                    <input className={error ? "error-input" : ""} ref={passwordRef} type="password" name="password" placeholder="Password" />
                                 </div>
                             </div>
                             <div style={{marginTop: "0.5rem"}}>

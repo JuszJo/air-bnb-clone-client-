@@ -6,6 +6,7 @@ import api from "../api/api";
 
 export default function Signup() {
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false)
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const usernameRef = useRef(null);
@@ -23,11 +24,15 @@ export default function Signup() {
             })
 
             if(response.status !== 200) {
-                setLoading(false)
+                const data = await response.json()
 
-                navigate(0)
+                setError(data.error)
+
+                setLoading(false)
             }
             else {
+                setError(false)
+                
                 setLoading(false)
 
                 navigate('/login')
@@ -64,6 +69,9 @@ export default function Signup() {
                         </div>
                         <div className="form-group">
                             <div>
+                                {error && <p className="error">Please fill in the correct details</p>}
+                            </div>
+                            <div>
                                 <select>
                                     <option value="234NG">Nigeria (+234)</option>
                                 </select>
@@ -74,16 +82,16 @@ export default function Signup() {
                                 }} width={16} src={arrowDown} />
                             </div>
                             <div>
-                                <input ref={nameRef} type="text" name="name" placeholder="Name" />
+                                <input className={error["name"] ? "error-input" : ""} ref={nameRef} type="text" name="name" placeholder="Name" />
                             </div>
                             <div>
-                                <input ref={emailRef} type="text" name="email" placeholder="Email" />
+                                <input className={error["email"] ? "error-input" : ""} ref={emailRef} type="text" name="email" placeholder="Email" />
                             </div>
                             <div>
-                                <input ref={usernameRef} type="text" name="username" placeholder="Username" />
+                                <input className={error["username"] ? "error-input" : ""} ref={usernameRef} type="text" name="username" placeholder="Username" />
                             </div>
                             <div>
-                                <input ref={passwordRef} type="password" name="password" placeholder="Password" />
+                                <input className={error["password"] ? "error-input" : ""} ref={passwordRef} type="password" name="password" placeholder="Password" />
                             </div>
                         </div>
                         <div>

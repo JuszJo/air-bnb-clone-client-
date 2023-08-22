@@ -462,6 +462,16 @@ section ::-webkit-scrollbar {
     border-radius: 0.5rem;
 }
 
+.error {
+    text-align: center;
+    color: red;
+    margin-bottom: 0.5rem;
+}
+
+.error-input {
+    border: 1px solid red !important;
+}
+
 @media screen and (min-width: 1000px) {
     .su-container {
         max-width: 550px;
