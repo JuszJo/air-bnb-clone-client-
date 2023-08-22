@@ -263,6 +263,12 @@ section ::-webkit-scrollbar {
     padding: 40% 50%;
 }
 
+.skeleton-textarea {
+    margin-top: 0.25rem;
+    height: 200px;
+    width: 100%;
+}
+
 .skeleton-text {
     margin-top: 0.25rem;
     height: 15px;

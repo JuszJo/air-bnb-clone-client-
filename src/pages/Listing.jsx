@@ -10,6 +10,7 @@ import api from '../api/api'
 import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
 import rightArrow from "../assets/right_arrow.png"
+import Skeleton from "../components/Skeleton"
 
 function UserIcon({user}) {
     return (
@@ -101,7 +102,7 @@ export default function Listing() {
                 localStorage.removeItem('username')
             }
             
-            setHouseDate(data)
+            // setHouseDate(data)
         })
     }, [])
     
@@ -110,7 +111,7 @@ export default function Listing() {
             <section>
                 <Navbar />
                 { 
-                    houseData &&
+                    houseData ?
                         <div>
                             <div className="listing-container">
                                 <div id="house-owner-div">
@@ -174,6 +175,10 @@ export default function Listing() {
                                         null
                                 }
                             </div>
+                        </div>
+                        :
+                        <div className="listing-container" style={{marginTop: "1rem"}}>
+                            <Skeleton />
                         </div>
                 }
                 <MobileNav />
