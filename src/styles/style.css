@@ -244,6 +244,63 @@ section ::-webkit-scrollbar {
     font-family: sans-serif;
 }
 
+.skeleton {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.skeleton-element {
+    background-color: #ebebeb;
+    border-radius: 8px;
+}
+
+.skeleton-animate {
+    animation: skeleton 2s linear infinite forwards;
+}
+
+.skeleton-image {
+    padding: 40% 50%;
+}
+
+.skeleton-text {
+    margin-top: 0.25rem;
+    height: 15px;
+    flex-basis: 50%;
+}
+
+.skeleton-text-2 {
+    margin-top: 0.25rem;
+    height: 15px;
+    flex-basis: 8%;
+}
+
+.skeleton-text-3 {
+    margin-top: 0.25rem;
+    height: 14px;
+    width: 40%;
+}
+
+.skeleton-text-4 {
+    margin-top: 0.25rem;
+    height: 12px;
+    width: 30%;
+}
+
+@keyframes skeleton {
+    0% {
+        background-color: #f2f0f0;
+    }
+    
+    50% {
+        background-color: #dbdada;
+    }
+    
+    100% {
+        background-color: #f2f0f0;
+    }
+}
+
 @media screen and (min-width: 550px) {
     #house-grid {
         display: grid;

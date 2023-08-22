@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Slider from "./Slider";
 import ShowButton from "./ShowButton";
 import TextSlider from "./TextSlider";
+import Skeleton from "./Skeleton";
 
 import api from '../api/api'
 
@@ -76,20 +77,27 @@ export default function Home() {
         })
     }
 
-    return (listings &&
+    return (
         <>
             <main>
-                <section>
-                    <div>
+                {
+                    listings ?
+                        <section>
+                            <div>
+                                <div id="house-grid" className="container">
+                                    {
+                                        houses.map(({id, image, location, distance, days, price, rating}) => {
+                                            return <Slider id={id} key={id} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
+                                        })
+                                    }
+                                </div>
+                            </div>
+                        </section>
+                        :
                         <div id="house-grid" className="container">
-                            {
-                                houses.map(({id, image, location, distance, days, price, rating}) => {
-                                    return <Slider id={id} key={id} image={image} location={location} distance={distance} days={days} price={price} rating={rating} />
-                                })
-                            }
+                            {Array.from([1, 2, 3, 4, 5, 6, 7, 8]).fill(0).map((key, index) => <Skeleton key={index} />)} 
                         </div>
-                    </div>
-                </section>
+                }
                 <section>
                     <div className="container">
                         <div style={{height: "120px", padding: "1.5rem 0"}}>
