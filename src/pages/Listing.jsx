@@ -102,7 +102,7 @@ export default function Listing() {
                 localStorage.removeItem('username')
             }
             
-            // setHouseDate(data)
+            setHouseDate(data)
         })
     }, [])
     
