@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-
 import Slider from "./Slider";
 import ShowButton from "./ShowButton";
 import TextSlider from "./TextSlider";
 import Skeleton from "./Skeleton";
 
-import api from '../api/api'
+import useListings from "../hooks/useListings";
 
 export default function Home() {
     const houses = []
@@ -37,29 +35,7 @@ export default function Home() {
         },
     ]
 
-    const [listings, setListings] = useState(null)
-
-    async function fetchListings() {
-        const response = await fetch(api.root, {
-            headers: {
-                "authorization": localStorage.getItem('token')
-            }
-        })
-
-        const data = await response.json()
-        
-        return data
-    }
-
-    useEffect(() => {
-        fetchListings()
-        .then(data => {
-            setListings(data)
-        })
-        .catch(err => {
-            console.log(err);
-        })
-    }, [])
+    const [listings] = useListings()
 
     if(listings) {
         listings.forEach(houseData => {

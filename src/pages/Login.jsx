@@ -1,47 +1,11 @@
-import { useRef, useState } from "react"
-import { Link, useNavigate } from "react-router-dom";
-
-import api from '../api/api'
+import { useRef } from "react"
+import { Link } from "react-router-dom";
+import useLogin from "../hooks/useLogin";
 
 export default function Login() {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false)
+    const [initLogin, loading, error] = useLogin()
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-    const navigate = useNavigate();
-
-    async function submitDetails(userObject) {
-        try {
-            const response = await fetch(api.login, {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(userObject)
-            })
-
-            if(response.status !== 200) {
-                setError(true)
-                
-                setLoading(false)
-            }
-            else {
-                const data = await response.json();
-
-                localStorage.setItem('token', data.token)
-                localStorage.setItem('username', data.username)
-
-                setError(false)
-
-                setLoading(false)
-
-                navigate('/', {replace: true})
-            }
-        }
-        catch(error) {
-            if(error) throw error
-        }
-    }
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -51,9 +15,7 @@ export default function Login() {
             password: passwordRef.current.value,
         }
 
-        setLoading(true)
-
-        await submitDetails(userObject)
+        initLogin(userObject)
     }
 
     return (

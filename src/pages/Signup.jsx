@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import arrowDown from "../assets/arrow-down.svg"
 import { useNavigate } from "react-router-dom";
 
-import api from "../api/api";
+// import api from "../api/api";
 
 export default function Signup() {
     const [loading, setLoading] = useState(false);
@@ -13,48 +13,48 @@ export default function Signup() {
     const passwordRef = useRef(null);
     const navigate = useNavigate();
 
-    async function submitDetails(userObject) {
-        try {
-            const response = await fetch(api.signup, {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(userObject)
-            })
+    // async function submitDetails(userObject) {
+    //     try {
+    //         const response = await fetch(api.signup, {
+    //             method: "POST",
+    //             headers: {
+    //                 "content-type": "application/json"
+    //             },
+    //             body: JSON.stringify(userObject)
+    //         })
 
-            if(response.status !== 200) {
-                const data = await response.json()
+    //         if(response.status !== 200) {
+    //             const data = await response.json()
 
-                setError(data.error)
+    //             setError(data.error)
 
-                setLoading(false)
-            }
-            else {
-                setError(false)
+    //             setLoading(false)
+    //         }
+    //         else {
+    //             setError(false)
                 
-                setLoading(false)
+    //             setLoading(false)
 
-                navigate('/login')
-            }
-        }
-        catch(error) {
-            if(error) throw error
-        }
-    }
+    //             navigate('/login')
+    //         }
+    //     }
+    //     catch(error) {
+    //         if(error) throw error
+    //     }
+    // }
 
-    async function handleSubmit() {
-        const userObject = {
-            name: nameRef.current.value,
-            email: emailRef.current.value,
-            username: usernameRef.current.value,
-            password: passwordRef.current.value,
-        }
+    // async function handleSubmit() {
+    //     const userObject = {
+    //         name: nameRef.current.value,
+    //         email: emailRef.current.value,
+    //         username: usernameRef.current.value,
+    //         password: passwordRef.current.value,
+    //     }
 
-        setLoading(true)
+    //     setLoading(true)
 
-        await submitDetails(userObject)
-    }
+    //     await submitDetails(userObject)
+    // }
 
     return (
         <>

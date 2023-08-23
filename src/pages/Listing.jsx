@@ -5,7 +5,7 @@ import MobileNav from "../components/MobileNav"
 import Button from "../components/Button"
 import { getFirstCharUpper } from "../utils/utils"
 
-import api from '../api/api'
+// import api from '../api/api'
 
 import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
@@ -62,49 +62,49 @@ export default function Listing() {
         }
     }
 
-    function handleDelete() {
-        setLoading(true)
+    // function handleDelete() {
+    //     setLoading(true)
 
-        fetch(`${api.delete}/${params.id}`, {
-            method: "DELETE",
-            headers: {
-                "authorization": localStorage.getItem('token')
-            }
-        })
-        .then(response => {
-            if(response.ok) {
-                setLoading(false)
+    //     fetch(`${api.delete}/${params.id}`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             "authorization": localStorage.getItem('token')
+    //         }
+    //     })
+    //     .then(response => {
+    //         if(response.ok) {
+    //             setLoading(false)
                 
-                alert("House deleted")
+    //             alert("House deleted")
 
-                navigate("/", {replace: true})
-            }
-            else {
-                setLoading(false)
+    //             navigate("/", {replace: true})
+    //         }
+    //         else {
+    //             setLoading(false)
 
-                alert("Error deleting house")
+    //             alert("Error deleting house")
 
-                navigate(0, {replace: true})
-            }
-        })
-    }
+    //             navigate(0, {replace: true})
+    //         }
+    //     })
+    // }
 
-    useEffect(() => {
-        fetch(`${api.listing}/${params.id}`, {
-            headers: {
-                "authorization": localStorage.getItem('token')
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.signout) {
-                localStorage.removeItem('token')
-                localStorage.removeItem('username')
-            }
+    // useEffect(() => {
+    //     fetch(`${api.listing}/${params.id}`, {
+    //         headers: {
+    //             "authorization": localStorage.getItem('token')
+    //         }
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if(data.signout) {
+    //             localStorage.removeItem('token')
+    //             localStorage.removeItem('username')
+    //         }
             
-            setHouseDate(data)
-        })
-    }, [])
+    //         setHouseDate(data)
+    //     })
+    // }, [])
     
     return (
         <>
