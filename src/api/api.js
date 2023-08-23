@@ -1,13 +1,11 @@
-const prod = true;
-
 const api = {
-    root: prod ? "https://jobnb-server.onrender.com" : "http://localhost:3000",
-    auth: prod ? "https://jobnb-server.onrender.com/auth" : "http://localhost:3000/auth",
-    listing: prod ? "https://jobnb-server.onrender.com/listing" : "http://localhost:3000/listing",
-    login: prod ? "https://jobnb-server.onrender.com/login" : "http://localhost:3000/login",
-    signup: prod ? "https://jobnb-server.onrender.com/signup" : "http://localhost:3000/signup",
-    upload: prod ? "https://jobnb-server.onrender.com/upload" : "http://localhost:3000/upload",
-    delete: prod ? "https://jobnb-server.onrender.com/delete" : "http://localhost:3000/delete",
+    root: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com" : "http://localhost:3000",
+    auth: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com/auth" : "http://localhost:3000/auth",
+    listing: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com/listing" : "http://localhost:3000/listing",
+    login: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com/login" : "http://localhost:3000/login",
+    signup: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com/signup" : "http://localhost:3000/signup",
+    upload: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com/upload" : "http://localhost:3000/upload",
+    delete: import.meta.env.VITE_APP_ENV == "production" ? "https://jobnb-server.onrender.com/delete" : "http://localhost:3000/delete",
 }
 
 export async function getListings() {

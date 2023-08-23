@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import MobileNav from "../components/MobileNav"
 import Button from "../components/Button"
+import Skeleton from "../components/Skeleton"
 
 import useListing from "../hooks/useListing"
 import { getFirstCharUpper } from "../utils/utils"
@@ -10,7 +11,6 @@ import { getFirstCharUpper } from "../utils/utils"
 import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
 import rightArrow from "../assets/right_arrow.png"
-import Skeleton from "../components/Skeleton"
 
 function UserIcon({user}) {
     return (
