@@ -8,6 +8,8 @@ export default function useLogin() {
     const navigate = useNavigate();
 
     function initLogin(userObject) {
+        setLoading(true)
+        
         submitLoginDetails(userObject)
             .then(response => {
                 if(response.status !== 200) {
