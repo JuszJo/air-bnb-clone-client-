@@ -1,60 +1,26 @@
-import { useRef, useState } from "react"
-import arrowDown from "../assets/arrow-down.svg"
-import { useNavigate } from "react-router-dom";
+import { useRef } from "react"
 
-// import api from "../api/api";
+import useSignup from "../hooks/useSignup";
+
+import arrowDown from "../assets/arrow-down.svg"
 
 export default function Signup() {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false)
+    const [initSignup, loading, error] = useSignup()
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
-    const navigate = useNavigate();
 
-    // async function submitDetails(userObject) {
-    //     try {
-    //         const response = await fetch(api.signup, {
-    //             method: "POST",
-    //             headers: {
-    //                 "content-type": "application/json"
-    //             },
-    //             body: JSON.stringify(userObject)
-    //         })
+    async function handleSubmit() {
+        const userObject = {
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            username: usernameRef.current.value,
+            password: passwordRef.current.value,
+        }
 
-    //         if(response.status !== 200) {
-    //             const data = await response.json()
-
-    //             setError(data.error)
-
-    //             setLoading(false)
-    //         }
-    //         else {
-    //             setError(false)
-                
-    //             setLoading(false)
-
-    //             navigate('/login')
-    //         }
-    //     }
-    //     catch(error) {
-    //         if(error) throw error
-    //     }
-    // }
-
-    // async function handleSubmit() {
-    //     const userObject = {
-    //         name: nameRef.current.value,
-    //         email: emailRef.current.value,
-    //         username: usernameRef.current.value,
-    //         password: passwordRef.current.value,
-    //     }
-
-    //     setLoading(true)
-
-    //     await submitDetails(userObject)
-    // }
+        await initSignup(userObject)
+    }
 
     return (
         <>

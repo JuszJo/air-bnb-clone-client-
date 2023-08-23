@@ -22,42 +22,26 @@ export async function getListings() {
     return data
 }
 
-// async function submitDetails(userObject) {
-    //     try {
-    //         const response = await fetch(api.login, {
-    //             method: "POST",
-    //             headers: {
-    //                 "content-type": "application/json"
-    //             },
-    //             body: JSON.stringify(userObject)
-    //         })
-
-    //         if(response.status !== 200) {
-    //             setError(true)
-                
-    //             setLoading(false)
-    //         }
-    //         else {
-    //             const data = await response.json();
-
-    //             localStorage.setItem('token', data.token)
-    //             localStorage.setItem('username', data.username)
-
-    //             setError(false)
-
-    //             setLoading(false)
-
-    //             navigate('/', {replace: true})
-    //         }
-    //     }
-    //     catch(error) {
-    //         if(error) throw error
-    //     }
-    // }
-
 export async function submitLoginDetails(userObject) {
     try {
         const response = await fetch(api.login, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userObject)
+        })
+
+        return response
+    }
+    catch(err) {
+        if(err) throw err
+    }
+}
+
+export async function submitSignupDetails(userObject) {
+    try {
+        const response = await fetch(api.signup, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
