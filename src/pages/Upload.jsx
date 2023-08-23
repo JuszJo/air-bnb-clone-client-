@@ -1,10 +1,10 @@
 import { useRef, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import MobileNav from "../components/MobileNav"
-// import api from "../api/api"
+
+import useUpload from "../hooks/useUpload"
 
 export default function Upload() {
-    const [loading, setLoading] = useState(false)
+    const [initUpload, loading] = useUpload()
     const [filesAmount, setFilesAmount] = useState(0)
     const fileRef = useRef(null)
     const nameRef = useRef(null)
@@ -19,45 +19,25 @@ export default function Upload() {
         setFilesAmount(files.length)
     }
 
-    // function handleUpload(e) {
-    //     e.preventDefault()
+    async function handleUpload(e) {
+        e.preventDefault()
 
-    //     setLoading(true)
+        const formData = new FormData()
 
-    //     const formData = new FormData()
+        formData.append("name", nameRef.current.value)
+        formData.append("location", locationRef.current.value)
+        formData.append("price", priceRef.current.value)
+        formData.append("rating", ratingRef.current.value)
+        formData.append("description", descriptionRef.current.value)
 
-    //     formData.append("name", nameRef.current.value)
-    //     formData.append("location", locationRef.current.value)
-    //     formData.append("price", priceRef.current.value)
-    //     formData.append("rating", ratingRef.current.value)
-    //     formData.append("description", descriptionRef.current.value)
+        const files = fileRef.current.files
 
-    //     const files = fileRef.current.files
+        for(let i = 0; i < files.length; i++) {
+            formData.append("files", files[i])
+        }
 
-    //     for(let i = 0; i < files.length; i++) {
-    //         formData.append("files", files[i])
-    //     }
-
-    //     fetch(api.upload, {
-    //         method: "POST",
-    //         headers: {
-    //             "authorization": localStorage.getItem("token")
-    //         },
-    //         body: formData
-    //     })
-    //     .then(res => {
-    //         if(!res.ok) {
-    //             setLoading(false)
-
-    //             alert("failed")
-    //         }
-    //         else {
-    //             setLoading(false)
-
-    //             alert("successful")
-    //         }
-    //     })   
-    // }
+        await initUpload(formData)
+    }
 
     return (
         <>

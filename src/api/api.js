@@ -55,3 +55,15 @@ export async function submitSignupDetails(userObject) {
         if(err) throw err
     }
 }
+
+export async function uploadListing(formData) {
+    const response = await fetch(api.upload, {
+        method: "POST",
+        headers: {
+            "authorization": localStorage.getItem("token")
+        },
+        body: formData
+    })
+    
+    return response
+}
