@@ -22,6 +22,34 @@ export async function getListings() {
     return data
 }
 
+export async function getListing(id) {
+    const response = await fetch(`${api.listing}/${id}`, {
+        headers: {
+            "authorization": localStorage.getItem('token')
+        }
+    })
+    
+    const data = await response.json()
+    
+    if(data.signout) {
+        localStorage.removeItem('token')
+        localStorage.removeItem('username')
+    }
+
+    return data
+}
+
+export async function deleteListing(id) {
+    const response = await fetch(`${api.delete}/${id}`, {
+        method: "DELETE",
+        headers: {
+            "authorization": localStorage.getItem('token')
+        }
+    })
+    
+    return response
+}
+
 export async function submitLoginDetails(userObject) {
     try {
         const response = await fetch(api.login, {

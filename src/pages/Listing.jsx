@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useState } from "react"
+import { useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import MobileNav from "../components/MobileNav"
 import Button from "../components/Button"
-import { getFirstCharUpper } from "../utils/utils"
 
-// import api from '../api/api'
+import useListing from "../hooks/useListing"
+import { getFirstCharUpper } from "../utils/utils"
 
 import ratings from "../assets/ratings.png"
 import leftArrow from "../assets/left_arrow.png"
@@ -39,10 +39,8 @@ function Review({review: {name, review}}) {
 }
 
 export default function Listing() {
-    const [houseData, setHouseDate] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [houseData, initDelete, loading] = useListing()
     const [currentReview, setCurrentReview] = useState(0)
-    const navigate = useNavigate()
 
     const params = useParams()
 
@@ -62,49 +60,9 @@ export default function Listing() {
         }
     }
 
-    // function handleDelete() {
-    //     setLoading(true)
-
-    //     fetch(`${api.delete}/${params.id}`, {
-    //         method: "DELETE",
-    //         headers: {
-    //             "authorization": localStorage.getItem('token')
-    //         }
-    //     })
-    //     .then(response => {
-    //         if(response.ok) {
-    //             setLoading(false)
-                
-    //             alert("House deleted")
-
-    //             navigate("/", {replace: true})
-    //         }
-    //         else {
-    //             setLoading(false)
-
-    //             alert("Error deleting house")
-
-    //             navigate(0, {replace: true})
-    //         }
-    //     })
-    // }
-
-    // useEffect(() => {
-    //     fetch(`${api.listing}/${params.id}`, {
-    //         headers: {
-    //             "authorization": localStorage.getItem('token')
-    //         }
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         if(data.signout) {
-    //             localStorage.removeItem('token')
-    //             localStorage.removeItem('username')
-    //         }
-            
-    //         setHouseDate(data)
-    //     })
-    // }, [])
+    async function handleDelete() {
+        await initDelete(params.id)
+    }
     
     return (
         <>
