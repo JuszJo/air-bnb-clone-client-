@@ -1,4 +1,4 @@
-const prod = false;
+const prod = true;
 
 const api = {
     root: prod ? "https://jobnb-server.onrender.com" : "http://localhost:3000",
