@@ -11,43 +11,58 @@ const api = {
 }
 
 export async function getListings() {
-    const response = await fetch(api.root, {
-        headers: {
-            "authorization": localStorage.getItem('token')
-        }
-    })
-
-    const data = await response.json()
+    try {
+        const response = await fetch(api.root, {
+            headers: {
+                "authorization": localStorage.getItem('token')
+            }
+        })
     
-    return data
+        const data = await response.json()
+        
+        return data
+    }
+    catch(error) {
+        if(error) throw error
+    }
 }
 
 export async function getListing(id) {
-    const response = await fetch(`${api.listing}/${id}`, {
-        headers: {
-            "authorization": localStorage.getItem('token')
+    try {
+        const response = await fetch(`${api.listing}/${id}`, {
+            headers: {
+                "authorization": localStorage.getItem('token')
+            }
+        })
+        
+        const data = await response.json()
+        
+        if(data.signout) {
+            localStorage.removeItem('token')
+            localStorage.removeItem('username')
         }
-    })
     
-    const data = await response.json()
-    
-    if(data.signout) {
-        localStorage.removeItem('token')
-        localStorage.removeItem('username')
+        return data
     }
-
-    return data
+    catch(error) {
+        if(error) throw error
+    }
 }
 
 export async function deleteListing(id) {
-    const response = await fetch(`${api.delete}/${id}`, {
-        method: "DELETE",
-        headers: {
-            "authorization": localStorage.getItem('token')
-        }
-    })
-    
-    return response
+    try {
+        const response = await fetch(`${api.delete}/${id}`, {
+            method: "DELETE",
+            headers: {
+                "authorization": localStorage.getItem('token')
+            }
+        })
+        
+        return response
+    }
+    catch(error) {
+        if(error) throw error
+    }
 }
 
 export async function submitLoginDetails(userObject) {
@@ -85,13 +100,18 @@ export async function submitSignupDetails(userObject) {
 }
 
 export async function uploadListing(formData) {
-    const response = await fetch(api.upload, {
-        method: "POST",
-        headers: {
-            "authorization": localStorage.getItem("token")
-        },
-        body: formData
-    })
-    
-    return response
+    try {
+        const response = await fetch(api.upload, {
+            method: "POST",
+            headers: {
+                "authorization": localStorage.getItem("token")
+            },
+            body: formData
+        })
+        
+        return response
+    }
+    catch(error) {
+        if(error) throw error
+    }
 }
