@@ -38,6 +38,81 @@ function Review({review: {name, review}}) {
     )
 }
 
+function HouseOwner({owner, owner_name}) {
+    return (
+        <>
+            <div id="house-owner-div">
+                <div>
+                    <UserIcon user={owner} />
+                </div>
+                <div>
+                    <p>{owner_name}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
+function HouseImage({images}) {
+    return (
+        <>
+            <div id="house-image-div">
+                <img src={images[0]} alt="listing" className="listing-img" />
+            </div>
+        </>
+    )
+}
+
+function HouseInfo({name, price, location, description}) {
+    return (
+        <>
+            <div id="house-text-div">
+                <div id="house-identity-div">
+                    <div id="house-name-div">
+                        <h2 id="house-name">{name}</h2>
+                    </div>
+                    <div id="house-price-div">
+                        <p id="house-price">${price}<span>per night</span></p>
+                    </div>
+                </div>
+                <div id="house-location-div">
+                    <p id="house-location">{location}</p>
+                </div>
+                <div id="house-rating-div">
+                    <img src={ratings} alt="ratings" id="house-rating" />
+                </div>
+                <hr style={{border: "0.5px solid var(--light-grey)", marginTop: "8px"}} />
+                <div id="house-description-div">
+                    <article id="house-description">
+                        {description}
+                    </article>
+                </div>
+                <div id="reserve-button-div">
+                    <Button text={"Reserve"} primary style={{width: "100%"}} />
+                </div>
+            </div>
+        </>
+    )
+}
+
+function HouseReviews({reviews, currentReview, handleReviewChange}) {
+    return (
+        <>
+            <div id="house-review-div">
+                <div>
+                    <img src={leftArrow} onClick={handleReviewChange} id="prev-review" />
+                </div>
+                <div id="review-component-div">
+                    <Review review={reviews[currentReview]} />
+                </div>
+                <div>
+                    <img src={rightArrow} onClick={handleReviewChange} id="next-review" />
+                </div>
+            </div>
+        </>
+    )
+}
+
 export default function Listing() {
     const [houseData, initDelete, loading] = useListing()
     const [currentReview, setCurrentReview] = useState(0)
@@ -70,69 +145,24 @@ export default function Listing() {
                 <Navbar />
                 { 
                     houseData ?
-                        <div>
-                            <div className="listing-container">
-                                <div id="house-owner-div">
-                                    <div>
-                                        <UserIcon user={houseData.owner} />
-                                    </div>
-                                    <div>
-                                        <p>{houseData.owner_name}</p>
-                                    </div>
-                                </div>
-                                <div id="house-image-div">
-                                    <img src={houseData.images[0]} alt="listing" className="listing-img" />
-                                </div>
-                                <div id="house-info-div">
-                                    <div id="house-text-div">
-                                        <div id="house-identity-div">
-                                            <div id="house-name-div">
-                                                <h2 id="house-name">{houseData.name}</h2>
-                                            </div>
-                                            <div id="house-price-div">
-                                                <p id="house-price">${houseData.price}<span>per night</span></p>
-                                            </div>
-                                        </div>
-                                        <div id="house-location-div">
-                                            <p id="house-location">{houseData.location}</p>
-                                        </div>
-                                        <div id="house-rating-div">
-                                            <img src={ratings} alt="ratings" id="house-rating" />
-                                        </div>
-                                        <hr style={{border: "0.5px solid var(--light-grey)", marginTop: "8px"}} />
-                                        <div id="house-description-div">
-                                            <article id="house-description">
-                                                {houseData.description}
-                                            </article>
-                                        </div>
-                                        <div id="reserve-button-div">
-                                            <Button text={"Reserve"} primary style={{width: "100%"}} />
-                                        </div>
-                                    </div>
+                        <div className="listing-container">
+                            <HouseOwner owner={houseData.owner} owner_name={houseData.owner_name} />
+                            <HouseImage images={houseData.images} />
+                            <div id="house-info-div">
+                                <HouseInfo name={houseData.name} price={houseData.price} location={houseData.location} description={houseData.description} />
                                     {
                                         houseData.reviews.length > 0 &&
-                                            <div id="house-review-div">
-                                                <div>
-                                                    <img src={leftArrow} onClick={handleReviewChange} id="prev-review" />
-                                                </div>
-                                                <div id="review-component-div">
-                                                    <Review review={houseData.reviews[currentReview]} />
-                                                </div>
-                                                <div>
-                                                    <img src={rightArrow} onClick={handleReviewChange} id="next-review" />
-                                                </div>
-                                            </div>
+                                            <HouseReviews reviews={houseData.reviews} currentReview={currentReview} handleReviewChange={handleReviewChange} />
                                     }
-                                </div>
-                                {
-                                    houseData.role == "admin" ?
-                                        <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
-                                            <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
-                                        </div>
-                                    :
-                                        null
-                                }
                             </div>
+                            {
+                                houseData.role == "admin" ?
+                                    <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
+                                        <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
+                                    </div>
+                                :
+                                    null
+                            }
                         </div>
                         :
                         <div className="listing-container" style={{marginTop: "1rem"}}>
