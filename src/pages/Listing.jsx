@@ -1,7 +1,5 @@
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import Navbar from "../components/Navbar"
-import MobileNav from "../components/MobileNav"
 import Button from "../components/Button"
 import Skeleton from "../components/Skeleton"
 
@@ -142,34 +140,32 @@ export default function Listing() {
     return (
         <>
             <section>
-                <Navbar />
-                    <div className="listing-container">
-                        {
-                            houseData ? 
-                                <>
-                                    <HouseOwner owner={houseData.owner} owner_name={houseData.owner_name} />
-                                    <HouseImage images={houseData.images} />
-                                    <div id="house-info-div">
-                                        <HouseInfo name={houseData.name} price={houseData.price} location={houseData.location} description={houseData.description} />
-                                        {
-                                            houseData.reviews.length > 0 &&
-                                                <HouseReviews reviews={houseData.reviews} currentReview={currentReview} handleReviewChange={handleReviewChange} />
-                                        }
-                                    </div>
+                <div className="listing-container">
+                    {
+                        houseData ? 
+                            <>
+                                <HouseOwner owner={houseData.owner} owner_name={houseData.owner_name} />
+                                <HouseImage images={houseData.images} />
+                                <div id="house-info-div">
+                                    <HouseInfo name={houseData.name} price={houseData.price} location={houseData.location} description={houseData.description} />
                                     {
-                                        houseData.role == "admin" ?
-                                            <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
-                                                <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
-                                            </div>
-                                        :
-                                            null
-                                    }                                
-                                </>
-                                :
-                                <Skeleton />
-                        }
-                    </div>
-                <MobileNav />
+                                        houseData.reviews.length > 0 &&
+                                            <HouseReviews reviews={houseData.reviews} currentReview={currentReview} handleReviewChange={handleReviewChange} />
+                                    }
+                                </div>
+                                {
+                                    houseData.role == "admin" ?
+                                        <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
+                                            <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
+                                        </div>
+                                    :
+                                        null
+                                }                                
+                            </>
+                            :
+                            <Skeleton />
+                    }
+                </div>
             </section>
         </>
     )
