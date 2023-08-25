@@ -3,6 +3,7 @@ import { uploadListing } from "../api/api"
 
 export default function useUpload() {
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     async function initUpload(formData) {
         setLoading(true)
@@ -10,16 +11,20 @@ export default function useUpload() {
         const response = await uploadListing(formData)
 
         if(!(response.ok)) {
+            setError(true)
+
             setLoading(false)
 
             alert("Error uploading house")
         }
         else {
+            setError(false)
+
             setLoading(false)
 
             alert("House uploaded")
         }
     }
 
-    return [initUpload, loading]
+    return [initUpload, loading, error]
 }

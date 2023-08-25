@@ -4,7 +4,7 @@ import MobileNav from "../components/MobileNav"
 import useUpload from "../hooks/useUpload"
 
 export default function Upload() {
-    const [initUpload, loading] = useUpload()
+    const [initUpload, loading, error] = useUpload()
     const [filesAmount, setFilesAmount] = useState(0)
     const fileRef = useRef(null)
     const nameRef = useRef(null)
@@ -57,19 +57,19 @@ export default function Upload() {
                 </div>
                 <div className="form-group su-container">
                     <div>
-                        <input ref={nameRef} type="text" id="form-name" name="name" placeholder="Name" required />
+                        <input ref={nameRef} className={error ? "error-input" : ""} type="text" id="form-name" name="name" placeholder="Name" required />
                     </div>
                     <div>
-                        <input ref={locationRef} type="text" id="location" name="location" placeholder="Location" required />
+                        <input ref={locationRef} className={error ? "error-input" : ""} type="text" id="location" name="location" placeholder="Location" required />
                     </div>
                     <div>
-                        <input ref={priceRef} type="number" id="price" name="price" placeholder="Price" required />
+                        <input ref={priceRef} className={error ? "error-input" : ""} type="number" id="price" name="price" placeholder="Price" required />
                     </div>
                     <div>
-                        <input ref={ratingRef} type="number" id="rating" name="rating" placeholder="Rating" required />
+                        <input ref={ratingRef} className={error ? "error-input" : ""} type="number" id="rating" name="rating" placeholder="Rating" required />
                     </div>
                     <div>
-                        <textarea ref={descriptionRef} id="description" name="description" placeholder="Description" required />
+                        <textarea ref={descriptionRef} className={error ? "error-input" : ""} id="description" name="description" placeholder="Description" required />
                     </div>
                     <div>
                         <button disabled={loading} onClick={handleUpload} id="upload-button" className="su-bt-bg">{loading ? "Loading" : "Upload"}</button>
