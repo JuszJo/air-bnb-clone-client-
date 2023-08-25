@@ -143,32 +143,32 @@ export default function Listing() {
         <>
             <section>
                 <Navbar />
-                { 
-                    houseData ?
-                        <div className="listing-container">
-                            <HouseOwner owner={houseData.owner} owner_name={houseData.owner_name} />
-                            <HouseImage images={houseData.images} />
-                            <div id="house-info-div">
-                                <HouseInfo name={houseData.name} price={houseData.price} location={houseData.location} description={houseData.description} />
-                                    {
-                                        houseData.reviews.length > 0 &&
-                                            <HouseReviews reviews={houseData.reviews} currentReview={currentReview} handleReviewChange={handleReviewChange} />
-                                    }
-                            </div>
-                            {
-                                houseData.role == "admin" ?
-                                    <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
-                                        <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
+                    <div className="listing-container">
+                        {
+                            houseData ? 
+                                <>
+                                    <HouseOwner owner={houseData.owner} owner_name={houseData.owner_name} />
+                                    <HouseImage images={houseData.images} />
+                                    <div id="house-info-div">
+                                        <HouseInfo name={houseData.name} price={houseData.price} location={houseData.location} description={houseData.description} />
+                                        {
+                                            houseData.reviews.length > 0 &&
+                                                <HouseReviews reviews={houseData.reviews} currentReview={currentReview} handleReviewChange={handleReviewChange} />
+                                        }
                                     </div>
+                                    {
+                                        houseData.role == "admin" ?
+                                            <div id="delete-btn-div" style={{marginTop: "0.5rem"}}>
+                                                <button disabled={loading} onClick={handleDelete} className="btn-primary" style={{width: "100%"}}>{loading ? "Loading" : "Delete"}</button>
+                                            </div>
+                                        :
+                                            null
+                                    }                                
+                                </>
                                 :
-                                    null
-                            }
-                        </div>
-                        :
-                        <div className="listing-container" style={{marginTop: "1rem"}}>
-                            <Skeleton />
-                        </div>
-                }
+                                <Skeleton />
+                        }
+                    </div>
                 <MobileNav />
             </section>
         </>

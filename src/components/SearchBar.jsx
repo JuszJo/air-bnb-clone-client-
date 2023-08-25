@@ -22,7 +22,7 @@ export default function SearchBar() {
     return (
         <>
             <div style={{position: "relative"}} className="search-container" >
-                <input style={inputStyle} type="text" placeholder="Start Your Search" />
+                <input style={inputStyle} type="text" id="search" placeholder="Start Your Search" />
                 <img style={imageStyle} src={searchIcon} alt="search"/>
             </div>
         </>
