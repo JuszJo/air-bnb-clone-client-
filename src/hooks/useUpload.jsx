@@ -11,11 +11,11 @@ export default function useUpload() {
         const response = await uploadListing(formData)
 
         if(!(response.ok)) {
-            setError(true)
+            const data = await response.json()
+
+            setError(data.message)
 
             setLoading(false)
-
-            alert("Error uploading house")
         }
         else {
             setError(false)

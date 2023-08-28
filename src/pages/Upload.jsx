@@ -1,5 +1,4 @@
 import { useRef, useState } from "react"
-import MobileNav from "../components/MobileNav"
 
 import useUpload from "../hooks/useUpload"
 
@@ -44,7 +43,7 @@ export default function Upload() {
             <div>
                 <h2 className="su-sm-heading">Upload Property</h2>
             </div>
-            <form id="upload-form" method="POST">
+            <form id="upload-form" style={{paddingBottom: "2rem"}} method="POST">
                 <div style={{maxWidth: "80%", margin: "auto", textAlign: "center"}}>
                     <h2 className="su-heading">Property Information</h2>
                     <div style={{marginTop: "1rem"}}>
@@ -52,31 +51,33 @@ export default function Upload() {
                         <div>
                             <span style={{fontFamily: "sans-serif", fontSize: "13px"}}>{filesAmount} Files Choosen</span>
                         </div>
+                        <div style={{marginTop: "0.25rem"}}>
+                            {error.files && <span style={{fontFamily: "sans-serif", color: "red"}}>please upload an image</span>}
+                        </div>
                         <input onChange={handleNewFile} ref={fileRef} id="files" hidden type="file"  multiple required />
                     </div>
                 </div>
                 <div className="form-group su-container">
                     <div>
-                        <input ref={nameRef} className={error ? "error-input" : ""} type="text" id="form-name" name="name" placeholder="Name" required />
+                        <input ref={nameRef} className={error.name ? "error-input" : ""} type="text" id="form-name" name="name" placeholder="Name" required />
                     </div>
                     <div>
-                        <input ref={locationRef} className={error ? "error-input" : ""} type="text" id="location" name="location" placeholder="Location" required />
+                        <input ref={locationRef} className={error.location ? "error-input" : ""} type="text" id="location" name="location" placeholder="Location" required />
                     </div>
                     <div>
-                        <input ref={priceRef} className={error ? "error-input" : ""} type="number" id="price" name="price" placeholder="Price" required />
+                        <input ref={priceRef} className={error.price ? "error-input" : ""} type="number" id="price" name="price" placeholder="Price" required />
                     </div>
                     <div>
-                        <input ref={ratingRef} className={error ? "error-input" : ""} type="number" id="rating" name="rating" placeholder="Rating" required />
+                        <input ref={ratingRef} className={error.rating ? "error-input" : ""} type="number" id="rating" name="rating" placeholder="Rating" required />
                     </div>
                     <div>
-                        <textarea ref={descriptionRef} className={error ? "error-input" : ""} id="description" name="description" placeholder="Description" required />
+                        <textarea ref={descriptionRef} className={error.description ? "error-input" : ""} id="description" name="description" placeholder="Description" required />
                     </div>
                     <div>
                         <button disabled={loading} onClick={handleUpload} id="upload-button" className="su-bt-bg">{loading ? "Loading" : "Upload"}</button>
                     </div>
                 </div>
             </form>
-            <MobileNav />
         </>
     )
 }
