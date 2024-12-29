@@ -8,6 +8,8 @@ import Upload from "./pages/Upload";
 
 import "./styles/style.css"
 
+// TODO: REFACTOR
+
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/signup" element={<Signup />} />,
