@@ -10,6 +10,8 @@ import "./styles/style.css"
 
 // TODO: REFACTOR
 
+// TODO: FIX ERRORS
+
 const router = createBrowserRouter(
     createRoutesFromElements([
         <Route path="/signup" element={<Signup />} />,
